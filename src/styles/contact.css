@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Manrope:wght@800&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
+
+/* #container {
+  width: 100%;
+  height: 100vh;
+} */
+#title-contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 350px;
+  /* background-color: red; */
+}
+
+#title-contact-page h1 {
+  font-size: 96px;
+}
+
+#title-contact-page p {
+  font-size: 40px;
+}
+
+#main-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+}
+
+#main-card {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 100%;
+  color: white;
+  border-radius: 20px;
+}
+
+#card-left {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+  background-color: orange;
+  border-radius: 20px 0px 0px 20px;
+}
+
+#description-1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 40%;
+}
+
+#description-1 h2 {
+  margin: 15px;
+}
+
+#description-1 p {
+  font-size: 20px;
+  margin: 15px;
+}
+
+#description-2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 40%;
+}
+
+.description-2-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.description-2-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+}
+
+.description-2-icon Image {
+  width: 40px;
+  height: 40px;
+  filter: invert(100%) sepia(37%) saturate(496%) hue-rotate(221deg)
+    brightness(116%) contrast(100%);
+}
+
+.description-2-text {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 100%;
+}
+
+.description-2-text p {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+#description-3 {
+  width: 100%;
+  height: 20%;
+}
+
+#socials-div {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+#main-card-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 100%;
+  border-radius: 0px 20px 20px 0px;
+  background-color: whitesmoke;
+}
+
+#main-card-right-wrapper {
+  width: 90%;
+  height: 90%;
+  color: orange;
+}
+
+input[type="text"] {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type="email"] {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border: 3px solid orange;
+}
+
+input[type="email"]:focus {
+  border: 3px solid orange;
+}
+
+textarea:focus {
+  border: 3px solid orange;
+}
+
+#division-1 {
+  display: flex;
+  width: 100%;
+  height: 20%;
+}
+
+#first-name-division {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  gap: 10px;
+}
+
+#first-name-division input {
+  width: 80%;
+  height: 30px;
+  padding: 0px 5px;
+}
+
+#last-name-division {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  gap: 10px;
+}
+
+#last-name-division input {
+  width: 80%;
+  height: 30px;
+  padding: 0px 5px;
+}
+
+#last-name-division input:focus {
+  outline: none;
+}
+
+#division-2 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 20%;
+  gap: 10px;
+}
+
+#division-2 input {
+  width: 80%;
+  height: 30px;
+  padding: 0px 5px;
+}
+
+#division-3 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 45%;
+  gap: 10px;
+}
+
+#division-3 textarea {
+  resize: none;
+  width: 90%;
+  height: 100%;
+  padding: 5px 5px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+#division-4 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+}
+
+#submitBtn {
+  width: 100px;
+  height: 50px;
+  border-radius: 3px;
+  background-color: orange;
+  color: white;
+  font-size: 16px;
+  border: none;
+  font-weight: bold;
+}
+
+#submitBtn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+.spacing-div-1 {
+  width: 100%;
+  height: 100px;
+}

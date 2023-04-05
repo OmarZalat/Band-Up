@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Manrope:wght@800&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
+
+#user_card {
+  font-family: "Nunito Sans", sans-serif;
+  width: 80%;
+  height: 70%;
+  background-color: white;
+  margin-top: -40%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+}
+
+#user_card_profile_picture {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  width: 100%;
+  height: 50%;
+  background-color: purple;
+  background-image: url(/src/Media/Images/profile-pic.jpeg);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  border-radius: 5px 5px 0 0;
+}
+
+#user_card_button_wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 20%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#follow_unfollow_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 30px;
+  text-transform: uppercase;
+  transition: opacity 0.5s;
+  width: 60%;
+  height: 70%;
+  background-color: orange;
+}
+
+#follow_unfollow_button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+#more_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 80%;
+  font-size: 25px;
+  border: 1px solid white;
+  border-radius: 60px;
+  color: white;
+  background-color: orange;
+  transition: opacity 0.5s;
+}
+
+#more_button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+#user_card_details_wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 40%;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+#user_card_about {
+  width: 90%;
+  height: 30%;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+#user_card_about h1 {
+  font-size: 20px;
+}
+
+#user_card_friends {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#user_card_friends_label {
+  width: 70%;
+  height: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+#user_card_friends_number {
+  height: 100%;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+#user_card_posts {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#user_card_posts_label {
+  width: 70%;
+  height: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+#user_card_posts_number {
+  height: 100%;
+  font-weight: bold;
+  opacity: 0.7;
+}
