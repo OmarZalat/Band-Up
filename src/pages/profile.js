@@ -1,9 +1,8 @@
 import NavigationBar from "../../src/components/UI/navigationBar";
-import cover_photo from "../../public/cover-photo-test-1";
-import ProfileCard from "./profileCard";
-import ProfileHeader from "./profileHeader";
-import ProfileBandInfo from "./profileBandInfo";
-import ProfileContent from "./profileContent";
+import ProfileCard from "@/components/Profile/profileCard";
+import ProfileHeader from "@/components/Profile/profileHeader";
+import ProfileBandInfo from "@/components/Profile/profileBandInfo";
+import ProfileContent from "@/components/Profile/profileContent";
 import { useState } from "react";
 
 function Profile() {
