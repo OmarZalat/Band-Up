@@ -39,7 +39,7 @@ function SignUp() {
 
   // function PasswordValidation() {}
 
-  function submitHandler(event) {
+  async function submitHandler(event, currentUser) {
     event.preventDefault();
 
     const enteredFirstName = firstNameInput.current.value;
@@ -97,7 +97,13 @@ function SignUp() {
       country: enteredCountry,
       subscribe: isChecked,
     };
-    console.log(formData);
+
+    const res = await fetch("/api/createUser", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currentUser }),
+    });
+    console.log(currentUser);
   }
 
   return (
