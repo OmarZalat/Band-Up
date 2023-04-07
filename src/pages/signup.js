@@ -84,15 +84,15 @@ function SignUp() {
       return;
     }
 
+    const DOB = enteredDay + "/" + enteredMonth + "/" + enteredYear;
+
     const formData = {
       firstName: enteredFirstName,
       lastName: enteredLastName,
       email: enteredEmail,
       password: enteredPassword,
       confirmedPassword: enteredConfirmPassword,
-      day: enteredDay,
-      month: enteredMonth,
-      year: enteredYear,
+      DOB,
       gender: enteredGender,
       country: enteredCountry,
       subscribe: isChecked,
@@ -101,9 +101,9 @@ function SignUp() {
     const res = await fetch("/api/createUser", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ currentUser }),
+      body: JSON.stringify({ formData }),
     });
-    console.log(currentUser);
+    console.log(formData);
   }
 
   return (

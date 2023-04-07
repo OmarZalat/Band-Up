@@ -64,6 +64,8 @@ model UserData {
   password String
   confirmPassword String
   country String
+  DOB String
+  gender String
 }
 
 model UserFriends {
