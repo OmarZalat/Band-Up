@@ -11,65 +11,63 @@ datasource db {
 }
 
 model BandChatHistory {
-  id String @id @default(cuid())
-  FName String
-  LName String
+  id       String   @id @default(cuid())
+  FName    String
+  LName    String
   bandName String
-  image String
-  time DateTime
+  image    String
+  time     DateTime
 }
 
 model BandData {
-  id String @id @default(cuid())
-  bandName String
+  id        String  @id @default(cuid())
+  bandName  String
   bandPosts String
-  hiring Boolean
-  public Boolean
+  hiring    Boolean
+  public    Boolean
 }
 
 model BandMemberData {
-  id String @id @default(cuid())
-  FName String
-  LName String
+  id       String @id @default(cuid())
+  FName    String
+  LName    String
   bandName String
-  role String
+  role     String
 }
 
 model BandPosts {
-  id String @id @default(cuid())
-  image String
-  content String
-  likes Int
+  id       String @id @default(cuid())
+  image    String
+  content  String
+  likes    Int
   comments String
 }
 
 model PostComments {
-  id String @id @default(cuid())
-  FName String
-  LName String
-  image String
-  likes Int
+  id      String @id @default(cuid())
+  FName   String
+  LName   String
+  image   String
+  likes   Int
   comment String
 }
 
 model UserData {
-  id String @id @default(cuid())
-  FName String
-  LName String
-  username String?
-  image String
-  email String
+  id                String  @id @default(cuid())
+  FName             String
+  LName             String
+  username          String?
+  image             String?
+  email             String
   emailVerification Boolean
-  newsletterMember Boolean
-  password String
-  confirmPassword String
-  country String
-  DOB String
-  gender String
+  newsletterMember  Boolean
+  password          String
+  country           String
+  DOB               String
+  gender            String
 }
 
 model UserFriends {
-    id String @id @default(cuid())
-    friendID String
-
+  id       String @id @default(cuid())
+  friendID String
 }

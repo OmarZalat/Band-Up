@@ -22,11 +22,11 @@ export default async function handler(req, res) {
         LName: lastName,
         email,
         password,
-        confirmPassowrd: confirmedPassword,
         DOB,
         gender,
         country,
         newsletterMember: subscribe,
+        emailVerification: false,
       },
     });
     console.log(response);
