@@ -12,6 +12,10 @@ function SignIn() {
     return regex.test(email);
   }
 
+  function createNewAccountHandler() {
+    window.location.href = "/signup";
+  }
+
   function submitHandler(event) {
     event.preventDefault();
 
@@ -77,7 +81,12 @@ function SignIn() {
               <hr id="line-break" />
               <div className="spacing-1"></div>
               <div className={classes.division}>
-                <button id="create-new-account-btn">Create New Account</button>
+                <button
+                  id="create-new-account-btn"
+                  onClick={createNewAccountHandler}
+                >
+                  Create New Account
+                </button>
               </div>
             </div>
           </div>

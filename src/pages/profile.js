@@ -4,6 +4,7 @@ import ProfileHeader from "@/components/Profile/profileHeader";
 import ProfileBandInfo from "@/components/Profile/profileBandInfo";
 import ProfileContent from "@/components/Profile/profileContent";
 import { useState } from "react";
+import ProfileInterests from "@/components/Profile/profileInterests";
 
 function Profile() {
   return (
@@ -21,6 +22,7 @@ function Profile() {
             <div id="main_right">
               {/* bandInfo goes here */}
               <ProfileBandInfo></ProfileBandInfo>
+              <ProfileInterests></ProfileInterests>
               <div id="profile_content_wrapper">
                 <div id="profile_content">
                   <ProfileContent></ProfileContent>

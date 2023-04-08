@@ -1,0 +1,50 @@
+#interests_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 5%;
+}
+
+#interests {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: 80%;
+  background-color: white;
+  /* text-transform: uppercase;
+  font-weight: bold; */
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+#interests_content_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: orange;
+  width: 15%;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+#interests_content_info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow-x: scroll;
+  scrollbar-width: none;
+}
+
+#interests_content_info::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+#interests_content_info p {
+  cursor: pointer;
+}
