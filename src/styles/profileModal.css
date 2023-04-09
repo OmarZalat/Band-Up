@@ -186,3 +186,24 @@
   height: 100%;
   cursor: pointer;
 }
+
+.modal_delete_profile_wrapper {
+  width: auto; /* remove fixed width */
+  flex-grow: 1; /* allow the button to grow and occupy the remaining space */
+}
+
+#modal_delete_profile {
+  width: 100px;
+  height: 30px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: 0.5s;
+  margin-left: 35px;
+}
+
+#modal_delete_profile:hover {
+  opacity: 0.5;
+  transition: 0.5s;
+}

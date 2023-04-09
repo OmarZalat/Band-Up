@@ -257,6 +257,9 @@ function ProfileModal(props) {
           </div>
         </div>
         <div className="modal_footer">
+          <div className="modal_delete_profile_wrapper">
+            <button id="modal_delete_profile">Delete Profile</button>
+          </div>
           <div className="modal_cancel_button_wrapper">
             <button id="modal_cancel_button" onClick={cancelHandler}>
               Cancel
