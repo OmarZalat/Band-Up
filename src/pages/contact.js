@@ -72,7 +72,7 @@ function Contact() {
                   <BsTelephone size={35} />
                 </div>
                 <div className="description-2-text">
-                  <p>+961 01 218 717</p>
+                  <p>+961 70 386 312</p>
                 </div>
               </div>
               <div className="description-2-wrapper">
@@ -80,7 +80,7 @@ function Contact() {
                   <AiOutlineMail size={35}></AiOutlineMail>
                 </div>
                 <div className="description-2-text">
-                  <p>info@aust.edu.lb</p>
+                  <p>bandupsupp@gmail.com</p>
                 </div>
               </div>
               <div className="description-2-wrapper">
@@ -88,7 +88,7 @@ function Contact() {
                   <GoLocation size={35} />
                 </div>
                 <div className="description-2-text">
-                  <p>Ashrafieh, Alfred Naccache Avenue, Beirut, Lebanon</p>
+                  <p>Beirut, Lebanon</p>
                 </div>
               </div>
             </div>

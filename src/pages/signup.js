@@ -2,11 +2,12 @@ import Footer from "../../src/components/UI/footer";
 import { useRef } from "react";
 import { useState } from "react";
 import NewsletterCheckbox from "../../src/components/UI/newsLetterCheckBox";
+import { useRouter } from "next/router";
 
 function SignUp() {
   const [isChecked, setIsChecked] = useState(false);
   const [error, setError] = useState();
-
+  const router = useRouter();
   const firstNameInput = useRef();
   const lastNameInput = useRef();
   const emailInput = useRef();
@@ -32,6 +33,12 @@ function SignUp() {
       setPasswordsMatch(false);
     }
   };
+
+  function validatePassword(password) {
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+    return regex.test(password);
+  }
 
   function validateEmail(email) {
     const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -66,6 +73,12 @@ function SignUp() {
       return;
     }
     const enteredPassword = passwordInput.current.value;
+    if (!validatePassword(enteredPassword)) {
+      alert(
+        "Password must be between 8 and 16 characters and contain at least 1 special character, 1 number, 1 lower case letter, and 1 upper case letter"
+      );
+      return;
+    }
     const enteredConfirmPassword = confirmPasswordInput.current.value;
 
     if (!passwordsMatch) {
@@ -120,6 +133,7 @@ function SignUp() {
       body: JSON.stringify({ formData }),
     });
     console.log(formData);
+    router.push("/signin");
   }
 
   return (

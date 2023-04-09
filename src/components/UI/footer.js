@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function Footer() {
   return (
     <footer id="footer">
@@ -19,16 +21,16 @@ function Footer() {
       <div id="tab-1">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <a href="/feed">Feed</a>
+            <Link href="/feed">Feed</Link>
           </li>
           <li>
-            <a href="/contact">Contact Us</a>
+            <Link href="/contact">Contact Us</Link>
           </li>
           <li>
-            <a href="/about">About Us</a>
+            <Link href="/about">About Us</Link>
           </li>
         </ul>
       </div>
