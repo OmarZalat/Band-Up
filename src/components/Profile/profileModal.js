@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import { UserContext } from "@/context/userContext";
+import { useRouter } from "next/router";
+
 function ProfileModal(props) {
   const countries = [
     "Afghanistan",
@@ -207,6 +211,19 @@ function ProfileModal(props) {
     "Zimbabwe",
   ];
 
+  const { user, setUser } = useContext(UserContext);
+  const router = useRouter();
+  console.log(user);
+  async function handleDeleteProfile() {
+    const res = await fetch("/api/deleteProfile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: user.id }),
+    });
+    const data = await res.json();
+    setUser(null);
+    router.push("/");
+  }
   function cancelHandler() {
     props.onCancel();
   }
@@ -258,7 +275,9 @@ function ProfileModal(props) {
         </div>
         <div className="modal_footer">
           <div className="modal_delete_profile_wrapper">
-            <button id="modal_delete_profile">Delete Profile</button>
+            <button id="modal_delete_profile" onClick={handleDeleteProfile}>
+              Delete Profile
+            </button>
           </div>
           <div className="modal_cancel_button_wrapper">
             <button id="modal_cancel_button" onClick={cancelHandler}>

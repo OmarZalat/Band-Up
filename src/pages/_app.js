@@ -14,7 +14,14 @@ import "@/styles/profileModal.css";
 import "@/styles/profileInterests.css";
 // import "@/styles/signin.module.css";
 import "@/styles/signup.css";
+import { UserContext } from "@/context/userContext";
+import { useState } from "react";
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  const [user, setUser] = useState(null);
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <Component {...pageProps} />
+    </UserContext.Provider>
+  );
 }

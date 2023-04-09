@@ -1,12 +1,15 @@
 import Footer from "../../src/components/UI/footer";
-import { useRef } from "react";
+import { useRouter } from "next/router";
+import { useContext, useRef } from "react";
 import { useState } from "react";
 import classes from "../../src/styles/signin.module.css";
+import { UserContext } from "@/context/userContext";
 
 function SignIn() {
+  const router = useRouter();
   const emailInput = useRef();
   const passwordInput = useRef();
-
+  const { user, setUser } = useContext(UserContext);
   function validateEmail(email) {
     const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return regex.test(email);
@@ -16,7 +19,7 @@ function SignIn() {
     window.location.href = "/signup";
   }
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
 
     const enteredEmail = emailInput.current.value;
@@ -38,7 +41,15 @@ function SignIn() {
       password: enteredPassword,
     };
 
-    console.log(formData);
+    const res = await fetch("/api/fetchUserData", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ formData }),
+    });
+    const data = await res.json();
+    console.log("DATA IS: " + data);
+    setUser(data);
+    router.push("/profile");
   }
 
   return (

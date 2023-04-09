@@ -5,6 +5,7 @@ import NewsletterCheckbox from "../../src/components/UI/newsLetterCheckBox";
 
 function SignUp() {
   const [isChecked, setIsChecked] = useState(false);
+  const [error, setError] = useState();
 
   const firstNameInput = useRef();
   const lastNameInput = useRef();
@@ -39,12 +40,27 @@ function SignUp() {
 
   // function PasswordValidation() {}
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
 
     const enteredFirstName = firstNameInput.current.value;
     const enteredLastName = lastNameInput.current.value;
     const enteredEmail = emailInput.current.value;
+    const result = await fetch("/api/fetchUserByEmail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ enteredEmail }),
+    });
+    console.log("FETCH USER BY EMAIL: " + result);
+    //data is an object that has a response of true or false
+    //if true, the email exists in the DB
+    const data = await result.json();
+
+    if (data.response) {
+      alert("Email already found, please sign in");
+      return;
+    }
+
     if (!validateEmail(enteredEmail)) {
       alert("Please enter a valid email address");
       return;
@@ -84,19 +100,25 @@ function SignUp() {
       return;
     }
 
+    const DOB = enteredDay + "/" + enteredMonth + "/" + enteredYear;
+
     const formData = {
       firstName: enteredFirstName,
       lastName: enteredLastName,
       email: enteredEmail,
       password: enteredPassword,
       confirmedPassword: enteredConfirmPassword,
-      day: enteredDay,
-      month: enteredMonth,
-      year: enteredYear,
+      DOB,
       gender: enteredGender,
       country: enteredCountry,
       subscribe: isChecked,
     };
+
+    const res = await fetch("/api/createUser", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ formData }),
+    });
     console.log(formData);
   }
 
