@@ -6,8 +6,11 @@ import image3 from "../../public/image-1.jpg";
 import image4 from "../../public/image-7.jpg";
 import image5 from "../../public/image-5.jpg";
 import Image from "next/image";
+import { useContext } from "react";
+import { UserContext } from "@/context/userContext";
 
 function Home() {
+  const { user, setUser } = useContext(UserContext);
   return (
     <div>
       <NavigationBar></NavigationBar>
