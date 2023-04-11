@@ -2,6 +2,7 @@ import { UserContext } from "@/context/userContext";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function NavigationBar() {
   const router = useRouter();
@@ -52,30 +53,30 @@ function NavigationBar() {
         ) : (
           <div id="nav-bar-right-container">
             <div id="nav-bar-right-container-profile-container">
-              <img src="/Media/Images/profile-pic.jpeg" />
+              <img src="../../public/profile-pic.jpeg" />
               <div id="nav-bar-right-container-profile">
                 <h4 className="h4-class">Profile ▼</h4>
                 <div id="dropdown">
                   <div className="dropdown-content">
-                    <a href="#">View Profile</a>
+                    <Link href="/profile">View Profile</Link>
                   </div>
                   <div className="dropdown-content">
-                    <a href="#">Settings & Privacy</a>
+                    <Link href="#">Settings & Privacy</Link>
                   </div>
                   <div className="dropdown-content">
-                    <a href="#">Help</a>
+                    <Link href="#">Help</Link>
                   </div>
                   <div className="dropdown-content">
-                    <a href="#">Language</a>
+                    <Link href="#">Language</Link>
                   </div>
                   <div className="dropdown-content">
-                    <a href="#">Sign Out</a>
+                    <Link href="#">Sign Out</Link>
                   </div>
                 </div>
               </div>
             </div>
             <div id="nav-bar-right-container-notification">
-              <img src="/Media/Icons/nav-bar-notification-bell.png" />
+              {/* <img src="/Media/Icons/nav-bar-notification-bell.png" /> */}
             </div>
           </div>
         )}

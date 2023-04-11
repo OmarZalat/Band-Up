@@ -227,6 +227,11 @@ function ProfileModal(props) {
   function cancelHandler() {
     props.onCancel();
   }
+  const handleCountryChange = (event) => {
+    const country = event.target.value;
+    setUser({ ...user, country });
+    console.log(user);
+  };
 
   return (
     <div className="modal">
@@ -250,16 +255,38 @@ function ProfileModal(props) {
             <div className="modal_cell_2">
               <div className="modal_cell_2_left">
                 <label>First Name</label>
-                <input type={Text} id="modal_edit_firstname"></input>
+                <input
+                  type={Text}
+                  id="modal_edit_firstname"
+                  value={user.FName}
+                ></input>
               </div>
               <div className="modal_cell_2_right">
                 <label>Last Name</label>
-                <input type={Text} id="modal_edit_lastname"></input>
+                <input
+                  type={Text}
+                  id="modal_edit_lastname"
+                  value={user.LName}
+                ></input>
               </div>
             </div>
-            <div className="modal_cell_3">
+            {/* <div className="modal_cell_3">
               <label>Country</label>
               <select id="modal_edit_country">
+                {countries.map((country) => (
+                  <option key={country} value={country}>
+                    {country}
+                  </option>
+                ))}
+              </select>
+            </div> */}
+            <div className="modal_cell_3">
+              <label>Country</label>
+              <select
+                id="modal_edit_country"
+                value={user.country}
+                onChange={handleCountryChange}
+              >
                 {countries.map((country) => (
                   <option key={country} value={country}>
                     {country}

@@ -3,12 +3,15 @@ import ProfileCard from "@/components/Profile/profileCard";
 import ProfileHeader from "@/components/Profile/profileHeader";
 import ProfileBandInfo from "@/components/Profile/profileBandInfo";
 import ProfileContent from "@/components/Profile/profileContent";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ProfileInterests from "@/components/Profile/profileInterests";
+import { UserContext } from "@/context/userContext";
 
 function Profile() {
+  const { user, setUser } = useContext(UserContext);
   return (
     <div>
+      {console.log(user)}
       <NavigationBar></NavigationBar>
       <div id="container">
         <div id="wrapper">
@@ -25,13 +28,15 @@ function Profile() {
               <ProfileInterests></ProfileInterests>
               <div id="profile_content_wrapper">
                 <div id="profile_content">
+                  {/* should be dynamic */}
+
+                  {/* <ProfileContent></ProfileContent>
                   <ProfileContent></ProfileContent>
                   <ProfileContent></ProfileContent>
                   <ProfileContent></ProfileContent>
                   <ProfileContent></ProfileContent>
                   <ProfileContent></ProfileContent>
-                  <ProfileContent></ProfileContent>
-                  <ProfileContent></ProfileContent>
+                  <ProfileContent></ProfileContent> */}
                 </div>
               </div>
             </div>

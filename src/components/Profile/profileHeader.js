@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ProfileBackdrop from "./profileBackdrop";
 import ProfileModal from "./profileModal";
+import { UserContext } from "@/context/userContext";
 
 function ProfileHeader() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { user, setUser } = useContext(UserContext);
 
   function deleteHandler() {
     setModalIsOpen(!modalIsOpen);
@@ -17,8 +19,10 @@ function ProfileHeader() {
       <div id="profile_header">
         <div id="profile_header_info">
           <div id="info_1">
-            <p className="info_1_name">Omar Zalat</p>
-            <p className="info_1_country">Beirut, Lebanon</p>
+            <p className="info_1_name">
+              {user.FName} {user.LName}
+            </p>
+            <p className="info_1_country">{user.country}</p>
           </div>
           <div id="info_2">
             <div id="share_button">share profile</div>
