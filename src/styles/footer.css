@@ -81,7 +81,7 @@
 
 #socials-div-footer {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 100px;
   width: 40%;
   height: 20%;
