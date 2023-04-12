@@ -18,10 +18,7 @@ function ProfileInterests() {
         <div id="interests">
           <div id="interests_content_label">interests</div>
           <div id="interests_content_info" ref={interestsContentInfoRef}>
-            <p>rock</p>
-            <p>metal</p>
-            <p>metal</p>
-            <p>metal</p>
+            {/* should be dynamic */}
           </div>
         </div>
       </div>

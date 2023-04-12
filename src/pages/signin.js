@@ -48,8 +48,12 @@ function SignIn() {
     });
     const data = await res.json();
     console.log("DATA IS: " + data);
-    setUser(data);
-    router.push("/profile");
+    if (data) {
+      setUser(data);
+      router.push("/profile");
+    } else {
+      alert("Email or password are invalid!");
+    }
   }
 
   return (

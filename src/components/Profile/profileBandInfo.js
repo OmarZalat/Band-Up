@@ -12,8 +12,9 @@ function ProfileBandInfo() {
             </thead>
             <tbody>
               <tr>
-                <td>AUST</td>
-                <td>pianist</td>
+                {/* should be dynamic */}
+                <td></td>
+                <td></td>
               </tr>
             </tbody>
           </table>
