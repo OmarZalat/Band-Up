@@ -11,7 +11,6 @@ function Profile() {
   const { user, setUser } = useContext(UserContext);
   return (
     <div>
-      {console.log(user)}
       <NavigationBar></NavigationBar>
       <div id="container">
         <div id="wrapper">
