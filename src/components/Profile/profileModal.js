@@ -49,10 +49,10 @@ function ProfileModal(props) {
   const countryInput = useRef();
   const bioInput = useRef();
 
-  function saveChangesHandler() {
+  async function saveChangesHandler() {
     if (updatedUser.FName.trim() === "" || updatedUser.LName.trim() === "") {
       alert("Please enter your firstname and lastname");
-      return; 
+      return;
     }
 
     // Update the user data in the UserContext
@@ -68,18 +68,26 @@ function ProfileModal(props) {
     const enteredBio = bioInput.current.value;
 
     const modalFormData = {
-      userName: enteredUserName,
+      id: user.id,
       firstName: enteredFirstName,
       lastName: enteredLastName,
+      userName: enteredUserName,
       country: enteredCountry,
       bio: enteredBio,
     };
-    console.log(`user: ${user}`);
-    console.log(`modalFormData ${modalFormData}`);
-    console.log(`updatedUser: ${updatedUser}`);
-    console.log(user);
-    console.log(modalFormData);
-    console.log(updatedUser);
+
+    const res = await fetch("/api/updateProfile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ modalFormData }),
+    });
+
+    // console.log(`user: ${user}`);
+    // console.log(`modalFormData ${modalFormData}`);
+    // console.log(`updatedUser: ${updatedUser}`);
+    // console.log(user);
+    // console.log(modalFormData);
+    // console.log(updatedUser);
     props.onCancel();
   }
 

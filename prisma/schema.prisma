@@ -65,6 +65,7 @@ model UserData {
   country           String
   DOB               String
   gender            String
+  bio               String?
 }
 
 model UserFriends {
