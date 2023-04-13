@@ -20,9 +20,9 @@ function ProfileHeader() {
         <div id="profile_header_info">
           <div id="info_1">
             <p className="info_1_name">
-              {user.FName} {user.LName}
+              {user?.FName} {user?.LName}
             </p>
-            <p className="info_1_country">{user.country}</p>
+            <p className="info_1_country">{user?.country}</p>
           </div>
           <div id="info_2">
             <div id="share_button">share profile</div>

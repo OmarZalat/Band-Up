@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -36,11 +33,10 @@ model BandMemberData {
 }
 
 model BandPosts {
-  id       String @id @default(cuid())
-  image    String?
-  content  String
-  bandID String
-  
+  id      String  @id @default(cuid())
+  image   String?
+  content String
+  bandID  String
 }
 
 model PostComments {

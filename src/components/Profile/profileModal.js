@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "@/context/userContext";
 import { useRouter } from "next/router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import countries from "./countries";
 
 function ProfileModal(props) {
@@ -10,6 +10,7 @@ function ProfileModal(props) {
 
   // Create a state variable to hold the updated user data
   const [updatedUser, setUpdatedUser] = useState(user);
+  console.log(updatedUser);
 
   // Create a copy of the original user data
   // const defaultUser = { ...user };
@@ -26,8 +27,10 @@ function ProfileModal(props) {
       body: JSON.stringify({ id: user.id }),
     });
     const data = await res.json();
-    setUser(null);
-    router.push("/");
+    if (data) {
+      setUser(null);
+      router.push("/");
+    }
   }
 
   const handleCountryChange = (event) => {
@@ -41,46 +44,29 @@ function ProfileModal(props) {
     console.log(user);
   }
 
-  //modal info in object form
-  const usernameInput = useRef();
-  const firstNameInput = useRef();
-  const lastNameInput = useRef();
-  const countryInput = useRef();
-  const bioInput = useRef();
-
   async function saveChangesHandler() {
     if (updatedUser.FName.trim() === "" || updatedUser.LName.trim() === "") {
       alert("Please enter your firstname and lastname");
       return;
     }
 
-    //backend code should be implemented heere
-
-    // Update the user data in the UserContext
-    setUser(updatedUser);
-
-    // Reset the updated user data to the default data
-
-    const enteredUserName = usernameInput.current.value;
-    const enteredFirstName = firstNameInput.current.value;
-    const enteredLastName = lastNameInput.current.value;
-    const enteredCountry = countryInput.current.value;
-    const enteredBio = bioInput.current.value;
-
     const modalFormData = {
       id: user.id,
-      firstName: enteredFirstName,
-      lastName: enteredLastName,
-      userName: enteredUserName,
-      country: enteredCountry,
-      bio: enteredBio,
+      username: updatedUser.username,
+      FName: updatedUser.FName,
+      LName: updatedUser.LName,
+      country: updatedUser.country,
+      bio: updatedUser.bio,
     };
-
-    const res = await fetch("/api/updateProfile", {
+    //backend code should be implemented heere
+    const res = await fetch("/api/updateUser", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ modalFormData }),
     });
+
+    // Update the user data in the UserContext
+    setUser(updatedUser);
 
     // console.log(`user: ${user}`);
     // console.log(`modalFormData ${modalFormData}`);
@@ -111,7 +97,13 @@ function ProfileModal(props) {
               <input
                 type={Text}
                 id="modal_edit_username"
-                ref={usernameInput}
+                value={updatedUser?.username}
+                onChange={(e) =>
+                  setUpdatedUser({
+                    ...updatedUser,
+                    username: e.currentTarget.value,
+                  })
+                }
               ></input>
             </div>
             <div className="modal_cell_2">
@@ -120,10 +112,12 @@ function ProfileModal(props) {
                 <input
                   type={Text}
                   id="modal_edit_firstname"
-                  value={updatedUser.FName}
-                  ref={firstNameInput}
+                  value={updatedUser?.FName}
                   onChange={(event) =>
-                    setUpdatedUser({ ...user, FName: event.target.value })
+                    setUpdatedUser({
+                      ...user,
+                      FName: event.currentTarget.value,
+                    })
                   }
                 ></input>
               </div>
@@ -132,10 +126,12 @@ function ProfileModal(props) {
                 <input
                   type={Text}
                   id="modal_edit_lastname"
-                  value={updatedUser.LName}
-                  ref={lastNameInput}
+                  value={updatedUser?.LName}
                   onChange={(event) =>
-                    setUpdatedUser({ ...user, LName: event.target.value })
+                    setUpdatedUser({
+                      ...user,
+                      LName: event.currentTarget.value,
+                    })
                   }
                 ></input>
               </div>
@@ -144,8 +140,7 @@ function ProfileModal(props) {
               <label>Country</label>
               <select
                 id="modal_edit_country"
-                value={updatedUser.country}
-                ref={countryInput}
+                value={updatedUser?.country}
                 onChange={handleCountryChange}
               >
                 {countries.map((country) => (
@@ -157,7 +152,13 @@ function ProfileModal(props) {
             </div>
             <div className="modal_cell_4">
               <label>Bio</label>
-              <textarea id="modal_edit_bio" ref={bioInput}></textarea>
+              <textarea
+                id="modal_edit_bio"
+                value={updatedUser?.bio}
+                onChange={(e) =>
+                  setUpdatedUser({ ...updatedUser, bio: e.currentTarget.value })
+                }
+              ></textarea>
             </div>
           </div>
         </div>

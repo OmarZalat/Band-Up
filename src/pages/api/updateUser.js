@@ -3,18 +3,19 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  const { id, firstName, lastName, userName, country, bio } = req.body.formData;
+  const { id, FName, LName, username, country, bio } = req.body.modalFormData;
   const response = await prisma.userData.update({
     where: {
       id,
     },
     data: {
-      FName: firstName,
-      LName: lastName,
-      username: userName,
+      FName,
+      LName,
+      username,
       country,
       bio,
     },
   });
-  return response;
+  console.log(response);
+  res.json(response);
 }
