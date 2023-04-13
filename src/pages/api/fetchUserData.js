@@ -1,13 +1,11 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   try {
     const { email, password } = req.body.formData;
-    const bcrypt = require("bcrypt");
-    const saltRounds = 10;
-    const hashedPassword = bcrypt.hashSync(password, saltRounds);
     const response = await prisma.userData.findFirst({
       select: {
         id: true,
@@ -19,12 +17,20 @@ export default async function handler(req, res) {
         country: true,
         newsletterMember: true,
         emailVerification: true,
+        password: true,
       },
       where: {
-        AND: [{ email }, { password: hashedPassword }],
+        email,
       },
     });
-    res.json(response);
+    const passwordMatch = bcrypt.compareSync(password, response.password);
+    console.log(passwordMatch);
+
+    if (passwordMatch) {
+      res.json(response);
+    } else {
+      res.send(false);
+    }
   } catch (e) {
     res.send(e);
   }
