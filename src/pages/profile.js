@@ -11,20 +11,20 @@ function Profile() {
   const { user, setUser } = useContext(UserContext);
   return (
     <div>
-      <NavigationBar></NavigationBar>
+      <NavigationBar />
       <div id="container">
         <div id="wrapper">
           {/* profileHeader goes here */}
-          <ProfileHeader></ProfileHeader>
+          <ProfileHeader />
           <div id="main">
             <div id="main_left">
               {/* ProfileCard goes here */}
-              <ProfileCard></ProfileCard>
+              <ProfileCard />
             </div>
             <div id="main_right">
               {/* bandInfo goes here */}
-              <ProfileBandInfo></ProfileBandInfo>
-              <ProfileInterests></ProfileInterests>
+              <ProfileBandInfo />
+              <ProfileInterests />
               <div id="profile_content_wrapper">
                 <div id="profile_content">
                   {/* should be dynamic */}

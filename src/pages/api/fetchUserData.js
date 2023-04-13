@@ -6,6 +6,11 @@ const prisma = new PrismaClient();
 export default async function handler(req, res) {
   try {
     const { email, password } = req.body.formData;
+    console.log(password);
+    const bcrypt = require("bcrypt");
+    const saltRounds = 10;
+    const hashedPassword = bcrypt.hashSync(password, saltRounds);
+    console.log(hashedPassword);
     const response = await prisma.userData.findFirst({
       select: {
         id: true,
@@ -18,6 +23,8 @@ export default async function handler(req, res) {
         newsletterMember: true,
         emailVerification: true,
         password: true,
+        username: true,
+        bio: true,
       },
       where: {
         email,
@@ -32,6 +39,7 @@ export default async function handler(req, res) {
       res.send(false);
     }
   } catch (e) {
+    console.log(e);
     res.send(e);
   }
 }
