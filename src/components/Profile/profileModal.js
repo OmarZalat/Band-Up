@@ -12,7 +12,7 @@ function ProfileModal(props) {
   const [updatedUser, setUpdatedUser] = useState(user);
 
   // Create a copy of the original user data
-  const defaultUser = { ...user };
+  // const defaultUser = { ...user };
 
   // Update the updatedUser state when the user context changes
   useEffect(() => {
@@ -32,12 +32,11 @@ function ProfileModal(props) {
 
   const handleCountryChange = (event) => {
     const country = event.target.value;
-    setUser({ ...user, country });
+    setUpdatedUser({ ...user, country });
     // console.log(user);
   };
 
   function cancelHandler() {
-    setUpdatedUser(defaultUser);
     props.onCancel();
     console.log(user);
   }
@@ -55,11 +54,12 @@ function ProfileModal(props) {
       return;
     }
 
+    //backend code should be implemented heere
+
     // Update the user data in the UserContext
     setUser(updatedUser);
 
     // Reset the updated user data to the default data
-    setUpdatedUser(defaultUser);
 
     const enteredUserName = usernameInput.current.value;
     const enteredFirstName = firstNameInput.current.value;
@@ -112,10 +112,10 @@ function ProfileModal(props) {
                 <input
                   type={Text}
                   id="modal_edit_firstname"
-                  value={user.FName}
+                  value={updatedUser.FName}
                   ref={firstNameInput}
                   onChange={(event) =>
-                    setUser({ ...user, FName: event.target.value })
+                    setUpdatedUser({ ...user, FName: event.target.value })
                   }
                 ></input>
               </div>
@@ -124,29 +124,19 @@ function ProfileModal(props) {
                 <input
                   type={Text}
                   id="modal_edit_lastname"
-                  value={user.LName}
+                  value={updatedUser.LName}
                   ref={lastNameInput}
                   onChange={(event) =>
-                    setUser({ ...user, LName: event.target.value })
+                    setUpdatedUser({ ...user, LName: event.target.value })
                   }
                 ></input>
               </div>
             </div>
-            {/* <div className="modal_cell_3">
-              <label>Country</label>
-              <select id="modal_edit_country">
-                {countries.map((country) => (
-                  <option key={country} value={country}>
-                    {country}
-                  </option>
-                ))}
-              </select>
-            </div> */}
             <div className="modal_cell_3">
               <label>Country</label>
               <select
                 id="modal_edit_country"
-                value={user.country}
+                value={updatedUser.country}
                 ref={countryInput}
                 onChange={handleCountryChange}
               >
