@@ -6,19 +6,16 @@ import image3 from "../../public/image-1.jpg";
 import image4 from "../../public/image-7.jpg";
 import image5 from "../../public/image-5.jpg";
 import Image from "next/image";
-import { useContext } from "react";
-import { UserContext } from "@/context/userContext";
 
 function Home() {
-  const { user, setUser } = useContext(UserContext);
   return (
     <div>
-      <NavigationBar></NavigationBar>
+      <NavigationBar />
       <div className="spacing-div-1"></div>
       <div id="title-home-page">
         <h1>Band Up</h1>
         <br />
-        <h2>The Musicians’ Social Network</h2>
+        <h2>The Musicians&apos; Social Network</h2>
       </div>
       <div id="home-page-image-1">
         <Image src={image1}></Image>
