@@ -52,7 +52,7 @@ function ProfileModal(props) {
   function saveChangesHandler() {
     if (updatedUser.FName.trim() === "" || updatedUser.LName.trim() === "") {
       alert("Please enter your firstname and lastname");
-      return;
+      return; 
     }
 
     // Update the user data in the UserContext
