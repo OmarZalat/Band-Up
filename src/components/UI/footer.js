@@ -3,10 +3,10 @@ import Link from "next/link";
 function Footer() {
   return (
     <footer id="footer">
-      {/* <link
+      <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      /> */}
+      />
       <div id="footer-logo">
         <h1>
           <u>Band Up</u>
