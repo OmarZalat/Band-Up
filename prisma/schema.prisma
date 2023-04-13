@@ -37,10 +37,10 @@ model BandMemberData {
 
 model BandPosts {
   id       String @id @default(cuid())
-  image    String
+  image    String?
   content  String
-  likes    Int
-  comments String
+  bandID String
+  
 }
 
 model PostComments {
@@ -65,6 +65,7 @@ model UserData {
   country           String
   DOB               String
   gender            String
+  bio               String?
 }
 
 model UserFriends {
