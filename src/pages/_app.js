@@ -12,6 +12,7 @@ import "@/styles/profileContent.css";
 import "@/styles/profileHeader.css";
 import "@/styles/profileModal.css";
 import "@/styles/profileInterests.css";
+import "@/styles/feed.css";
 // import "@/styles/signin.module.css";
 import "@/styles/signup.css";
 import { UserContext } from "@/context/userContext";

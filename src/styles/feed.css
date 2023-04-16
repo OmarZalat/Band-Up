@@ -1,0 +1,288 @@
+#container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+
+#left {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  /* background-color: red; */
+}
+
+#left_logo {
+  padding: 30px;
+  font-size: 30px;
+}
+
+#left_wrapper {
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.left_wrapper_element {
+  font-size: 25px;
+  text-transform: capitalize;
+  padding: 5px;
+  /* background-color: aqua; */
+  transition: 0.5s;
+  text-decoration: none;
+  color: black;
+}
+
+.left_wrapper_element:hover {
+  cursor: pointer;
+  background-color: orange;
+  color: white;
+  border-radius: 3px;
+}
+
+#middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55%;
+  height: 100vh;
+}
+
+#middle_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+#middle_wrapper_header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+}
+
+#post_action {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 200px;
+}
+
+#post_action_compose_new {
+  width: 100%;
+  height: 60%;
+}
+
+#compose_new_textarea {
+  width: 99%;
+  height: 87%;
+  resize: none;
+  outline: none;
+  padding: 5px 4.5px;
+  font-size: 20px;
+  border: none;
+  background-color: whitesmoke;
+  border-radius: 10px 10px 0px 0px;
+}
+
+#compose_new_textarea::placeholder {
+  font-size: 20px;
+}
+
+#post_action_add_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 40%;
+  background-color: whitesmoke;
+  border-radius: 0px 0px 10px 10px;
+}
+
+#post_action_add_buttons button {
+  border: none;
+  transition: 0.5s;
+}
+
+#add_photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#add_video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#add_photo:hover {
+  cursor: pointer;
+  background-color: orange;
+  transition: 0.5s;
+  color: white;
+  border-radius: 3px;
+}
+
+#add_video:hover {
+  cursor: pointer;
+  background-color: orange;
+  transition: 0.5s;
+  color: white;
+  border-radius: 3px;
+}
+
+#post:hover {
+  cursor: pointer;
+  background-color: orange;
+  transition: 0.5s;
+  color: white;
+  border-radius: 3px;
+}
+
+#spacing {
+  width: 100%;
+  height: 50px;
+}
+
+#content_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  background-color: pink;
+  gap: 10px;
+}
+
+#right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 100%;
+}
+
+#right_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 100%;
+}
+
+#right_wrapper_header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+}
+
+#right_wrapper_header_search_bar {
+  width: 80%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid orange;
+  padding: 5px 5px;
+  outline: none;
+  font-size: 15px;
+}
+
+#right_wrapper_header_search_bar::placeholder {
+  font-size: 15px;
+}
+
+#right_wrapper_header_search_bar:focus {
+  border: 3px solid orange;
+  transition: 0.2s;
+}
+
+#band_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px;
+}
+
+#band_wrapper h1 {
+  font-size: 30px;
+}
+
+#band_wrapper_latest_post {
+  width: 100%;
+  height: 100%;
+  background-image: url(/Media/Images/image-2.jpg);
+  background-size: cover;
+}
+
+#friends_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 500px;
+  gap: 30px;
+}
+
+.friend {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  border: 3px solid orange;
+  border-radius: 5px;
+  background-color: whitesmoke;
+}
+
+.friend:hover {
+  cursor: pointer;
+  background-color: orange;
+  transition: 0.5s;
+  color: white;
+}
+
+.friend_description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 80%;
+}
+
+.friend_description_image {
+  width: 14%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: pink;
+  background-image: url(/Media/Images/blank_2.jpg);
+  background-size: cover;
+}
+
+.friend_description_name {
+  display: flex;
+  align-items: center;
+  width: 75%;
+  height: 100%;
+}
+
+.friend_description_name p {
+  font-size: 20px;
+}
