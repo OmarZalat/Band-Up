@@ -7,64 +7,76 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model BandChatHistory {
-  id       String   @id @default(cuid())
-  FName    String
-  LName    String
-  bandName String
-  image    String
-  time     DateTime
-}
-
 model BandData {
-  id        String  @id @default(cuid())
-  bandName  String
-  bandPosts String
-  hiring    Boolean
-  public    Boolean
-}
-
-model BandMemberData {
-  id       String @id @default(cuid())
-  FName    String
-  LName    String
-  bandName String
-  role     String
+  id          String      @id @default(cuid())
+  bandMembers UserData[]
+  createdAt   DateTime    @default(now())
+  bio         String?
+  name        String
+  tag         Tags        @relation(fields: [tagsId], references: [id])
+  posts       BandPosts[]
+  tagsId      String
 }
 
 model BandPosts {
-  id      String  @id @default(cuid())
-  image   String?
-  content String
-  bandID  String
+  id           String         @id @default(cuid())
+  image        String?
+  content      String
+  createdAt    DateTime       @default(now())
+  PostComments PostComments[]
+  Likes        Likes[]
+  BandData     BandData?      @relation(fields: [bandDataId], references: [id])
+  bandDataId   String?
 }
 
 model PostComments {
-  id      String @id @default(cuid())
-  FName   String
-  LName   String
-  image   String
-  likes   Int
-  comment String
+  id          String    @id @default(cuid())
+  postID      String
+  post        BandPosts @relation(fields: [bandPostsId], references: [id])
+  content     String
+  bandPostsId String
+  UserData    UserData? @relation(fields: [userDataId], references: [id])
+  userDataId  String?
+}
+
+enum Role {
+  MEMBER
+  PUBLISHER
+  LEADER
 }
 
 model UserData {
-  id                String  @id @default(cuid())
+  id                String         @id @default(cuid())
   FName             String
   LName             String
   username          String?
   image             String?
-  email             String
+  email             String         @unique
   emailVerification Boolean
   newsletterMember  Boolean
   password          String
   country           String
   DOB               String
   gender            String
+  role              Role           @default(MEMBER)
+  tags              String[]
   bio               String?
+  BandData          BandData?      @relation(fields: [bandDataId], references: [id])
+  bandDataId        String?
+  Likes             Likes[]
+  comments          PostComments[]
 }
 
-model UserFriends {
-  id       String @id @default(cuid())
-  friendID String
+model Likes {
+  id          String    @id @default(cuid())
+  post        BandPosts @relation(fields: [bandPostsId], references: [id])
+  user        UserData  @relation(fields: [userDataId], references: [id])
+  bandPostsId String
+  userDataId  String
+}
+
+model Tags {
+  id       String     @id @default(cuid())
+  name     String @unique
+  BandData BandData[]
 }
