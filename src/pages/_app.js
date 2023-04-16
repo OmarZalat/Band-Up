@@ -15,6 +15,8 @@ import "@/styles/profileInterests.css";
 import "@/styles/feed.css";
 // import "@/styles/signin.module.css";
 import "@/styles/signup.css";
+import "@/styles/feedPost.css";
+import "@/styles/feedFriend.css";
 import { UserContext } from "@/context/userContext";
 import { useState } from "react";
 

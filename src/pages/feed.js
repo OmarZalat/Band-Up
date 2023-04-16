@@ -1,4 +1,6 @@
 import Link from "next/link";
+import FeedPost from "@/components/Feed/feedPost";
+import FeedFriend from "@/components/Feed/feedFriend";
 
 function Feed() {
   return (
@@ -49,8 +51,12 @@ function Feed() {
                 <button id="post">Post</button>
               </div>
             </div>
-            {/* <div id="spacing"></div> */}
-            <div id="content_wrapper"></div>
+            <div id="content_wrapper">
+              <div id="content_test">
+                <FeedPost></FeedPost>
+                <FeedPost></FeedPost>
+              </div>
+            </div>
           </div>
         </div>
         <div id="right">
@@ -61,39 +67,21 @@ function Feed() {
                 placeholder="Search friends or bands..."
               />
             </div>
-            <div id="spacing"></div>
 
             <div id="band_wrapper">
               <h1>Your Band's Latest Posts</h1>
               <div id="band_wrapper_latest_post"></div>
             </div>
-            <div id="spacing"></div>
             <div id="friends_wrapper">
               <h1>Friends</h1>
-              <div className="friend">
-                <div className="friend_description">
-                  <div className="friend_description_image"></div>
-                  <div className="friend_description_name">
-                    <p>Name</p>
-                  </div>
-                </div>
-              </div>
-              <div className="friend">
-                <div className="friend_description">
-                  <div className="friend_description_image"></div>
-                  <div className="friend_description_name">
-                    <p>Name</p>
-                  </div>
-                </div>
-              </div>
-              <div className="friend">
-                <div className="friend_description">
-                  <div className="friend_description_image"></div>
-                  <div className="friend_description_name">
-                    <p>Name</p>
-                  </div>
-                </div>
-              </div>
+              <FeedFriend></FeedFriend>
+              <FeedFriend></FeedFriend>
+              <FeedFriend></FeedFriend>
+              <FeedFriend></FeedFriend>
+              <FeedFriend></FeedFriend>
+              <FeedFriend></FeedFriend>
+              <FeedFriend></FeedFriend>
+              <FeedFriend></FeedFriend>
             </div>
           </div>
         </div>
