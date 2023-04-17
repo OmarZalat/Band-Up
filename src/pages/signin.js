@@ -48,9 +48,16 @@ function SignIn() {
     });
     const data = await res.json();
     console.log(data);
+    // if (data) {
+    //   setUser(data);
+    //   router.push("/profile");
+    // } else {
+    //   alert("Email or password are invalid!");
+    // }
     if (data) {
       setUser(data);
-      router.push("/profile");
+      const from = router.query.from || "/feed";
+      router.push(from);
     } else {
       alert("Email or password are invalid!");
     }
