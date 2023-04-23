@@ -28,7 +28,26 @@ export default async function handler(req, res) {
             role: null,
           },
         });
-        console.log("EDIT ROLE RESPONSE: " + response);
+        const members = await prisma.bandData.findFirst({
+          select: {
+            bandMembers: true,
+          },
+          where: {
+            id: bandID,
+          },
+        });
+        const newMembers = members.bandMembers.filter(
+          (member) => member.id !== userID
+        );
+        await prisma.bandData.update({
+          where: {
+            id: bandID,
+          },
+          data: {
+            bandMembers: newMembers,
+          },
+        });
+        console.log("KICK MEMBER RESPONSE: " + response);
         res.send(response);
       }
     } catch (e) {
