@@ -9,13 +9,13 @@ datasource db {
 
 model BandData {
   id          String      @id @default(cuid())
-  bandMembers UserData[]
   createdAt   DateTime    @default(now())
   bio         String?
   name        String
+  tagsId      String
   tag         Tags        @relation(fields: [tagsId], references: [id])
   posts       BandPosts[]
-  tagsId      String
+  bandMembers UserData[]
 }
 
 model BandPosts {
@@ -23,26 +23,20 @@ model BandPosts {
   image        String?
   content      String
   createdAt    DateTime       @default(now())
-  PostComments PostComments[]
-  Likes        Likes[]
-  BandData     BandData?      @relation(fields: [bandDataId], references: [id])
   bandDataId   String?
+  BandData     BandData?      @relation(fields: [bandDataId], references: [id])
+  Likes        Likes[]
+  PostComments PostComments[]
 }
 
 model PostComments {
   id          String    @id @default(cuid())
   postID      String
-  post        BandPosts @relation(fields: [bandPostsId], references: [id])
   content     String
   bandPostsId String
-  UserData    UserData? @relation(fields: [userDataId], references: [id])
   userDataId  String?
-}
-
-enum Role {
-  MEMBER
-  PUBLISHER
-  LEADER
+  post        BandPosts @relation(fields: [bandPostsId], references: [id])
+  UserData    UserData? @relation(fields: [userDataId], references: [id])
 }
 
 model UserData {
@@ -58,25 +52,31 @@ model UserData {
   country           String
   DOB               String
   gender            String
-  role              Role           @default(MEMBER)
   tags              String[]
   bio               String?
-  BandData          BandData?      @relation(fields: [bandDataId], references: [id])
   bandDataId        String?
+  role              Role           @default(MEMBER)
   Likes             Likes[]
   comments          PostComments[]
+  BandData          BandData?      @relation(fields: [bandDataId], references: [id])
 }
 
 model Likes {
   id          String    @id @default(cuid())
-  post        BandPosts @relation(fields: [bandPostsId], references: [id])
-  user        UserData  @relation(fields: [userDataId], references: [id])
   bandPostsId String
   userDataId  String
+  post        BandPosts @relation(fields: [bandPostsId], references: [id])
+  user        UserData  @relation(fields: [userDataId], references: [id])
 }
 
 model Tags {
   id       String     @id @default(cuid())
   name     String     @unique
   BandData BandData[]
+}
+
+enum Role {
+  MEMBER
+  PUBLISHER
+  LEADER
 }
