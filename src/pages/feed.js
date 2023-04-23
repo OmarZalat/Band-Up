@@ -34,7 +34,7 @@ function Feed() {
                 Notifications
               </Link>
               <hr />
-              <Link href="#" className="left_wrapper_element">
+              <Link href="createBand" className="left_wrapper_element">
                 Create Band
               </Link>
               <Link href="#" className="left_wrapper_element">

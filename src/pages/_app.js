@@ -17,6 +17,7 @@ import "@/styles/feed.css";
 import "@/styles/signup.css";
 import "@/styles/feedPost.css";
 import "@/styles/feedFriend.css";
+import "@/styles/createBand.css";
 import { UserContext } from "@/context/userContext";
 import { useState } from "react";
 

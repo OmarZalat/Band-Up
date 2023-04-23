@@ -1,0 +1,61 @@
+#container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#create_band_form {
+  width: 30%;
+  height: 50%;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+#name_wrapper {
+  background-color: red;
+  width: 50%;
+  height: 10%;
+}
+
+#name_input {
+  width: 100%;
+  height: 100%;
+}
+
+#bio_wrapper {
+  width: 50%;
+  height: 30%;
+}
+
+#bio_input {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  outline: none;
+}
+
+#tag_wrapper {
+  width: 50%;
+  height: 10%;
+}
+
+#tagID {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+#create_band_button {
+  width: 20%;
+  height: 7%;
+}
+
+#create_band_button:hover {
+  cursor: pointer;
+}
