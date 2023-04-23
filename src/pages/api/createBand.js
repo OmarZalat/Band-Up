@@ -3,7 +3,9 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  const { bio, name, userID, role, tagID, verificationStatus } = req.body;
+  const { bio, name, userID, role, tagID, verificationStatus } =
+    req.body.formData;
+  console.log(req.body);
   if (verificationStatus) {
     try {
       const response = await prisma.bandData.create({
