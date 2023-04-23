@@ -25,6 +25,8 @@ export default async function handler(req, res) {
         password: true,
         username: true,
         bio: true,
+        bandDataId: true,
+        role: true,
       },
       where: {
         email,
