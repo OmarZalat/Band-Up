@@ -7,7 +7,7 @@ import Footer from "@/components/UI/footer";
 function CreateBand() {
   const router = useRouter();
   const { user, setUser } = useContext(UserContext);
-
+  console.log("USER: " + user);
   const [formData, setFormData] = useState({
     bio: "",
     name: "",
@@ -54,12 +54,13 @@ function CreateBand() {
   };
 
   const handleCreate = async (event) => {
+    event.preventDefault();
     const result = await fetch("/api/createBand", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ formData }),
     });
-    console.log(formData);
+    console.log("FORM DATA FOR CREATE BAND:" + formData);
     console.log(result);
   };
 
