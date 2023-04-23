@@ -13,6 +13,7 @@ import "@/styles/profileHeader.css";
 import "@/styles/profileModal.css";
 import "@/styles/profileInterests.css";
 import "@/styles/feed.css";
+import "@/styles/verify.css";
 // import "@/styles/signin.module.css";
 import "@/styles/signup.css";
 import "@/styles/feedPost.css";
