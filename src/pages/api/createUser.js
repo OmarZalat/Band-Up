@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         gender,
         country,
         newsletterMember: subscribe,
-        emailVerification: true,
+        emailVerification: false,
       },
     });
     console.log(response);
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
       service: "Gmail",
       auth: {
         user: "bandupsup@gmail.com", // Replace with your own email address
-        pass: "wick12345", // Replace with your own email password
+        pass: "eghtpkmfuqkkwatz", // Replace with your own email password
       },
     });
 
