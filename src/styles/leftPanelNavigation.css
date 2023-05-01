@@ -1,0 +1,36 @@
+#left {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  /* background-color: red; */
+}
+
+#left_logo {
+  padding: 30px;
+  font-size: 30px;
+}
+
+#left_wrapper {
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.left_wrapper_element {
+  font-size: 25px;
+  text-transform: capitalize;
+  padding: 5px;
+  /* background-color: aqua; */
+  transition: 0.5s;
+  text-decoration: none;
+  color: black;
+}
+
+.left_wrapper_element:hover {
+  cursor: pointer;
+  background-color: orange;
+  color: white;
+  border-radius: 3px;
+}

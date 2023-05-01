@@ -23,6 +23,9 @@ import "@/styles/myBandNavigationBar.css";
 import "@/styles/myBandSettingsTab.css";
 import "@/styles/myBandMembersTab.css";
 import "@/styles/myBandAboutTab.css";
+import "@/styles/joinBand.css";
+import "@/styles/leftPanelNavigation.css";
+
 import { UserContext } from "@/context/userContext";
 import { useState } from "react";
 

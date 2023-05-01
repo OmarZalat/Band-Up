@@ -4,6 +4,7 @@ import FeedFriend from "@/components/Feed/feedFriend";
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { UserContext } from "@/context/userContext";
+import LeftPanelNavigation from "@/components/UI/leftPanelNavigation";
 
 function Feed() {
   const router = useRouter();
@@ -22,36 +23,7 @@ function Feed() {
     <>
       {user ? (
         <div id="container">
-          <div id="left">
-            <div id="left_logo">
-              <h1>Band Up</h1>
-            </div>
-            <div id="left_wrapper">
-              <Link href="/" className="left_wrapper_element">
-                Home
-              </Link>
-              <Link href="#" className="left_wrapper_element">
-                Notifications
-              </Link>
-              <hr />
-              <Link href="createBand" className="left_wrapper_element">
-                Create Band
-              </Link>
-              <Link href="#" className="left_wrapper_element">
-                Join Band
-              </Link>
-              <Link href="myBand" className="left_wrapper_element">
-                My Band
-              </Link>
-              <hr />
-              <Link href="about" className="left_wrapper_element">
-                About Us
-              </Link>
-              <Link href="contact" className="left_wrapper_element">
-                Contact Us
-              </Link>
-            </div>
-          </div>
+          <LeftPanelNavigation />
           <div id="middle">
             <div id="middle_wrapper">
               <div id="middle_wrapper_header">

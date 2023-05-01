@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MyBandNavigationBar from "@/components/MyBand/myBandNavigationBar";
 import MyBandSettingsTab from "@/components/MyBand/myBandSettingsTab";
 import NavigationBar from "@/components/UI/navigationBar";
 import MyBandMembersTab from "@/components/MyBand/myBandMembersTab";
 import MyBandAboutTab from "@/components/MyBand/myBandAboutTab";
+import { UserContext } from "@/context/userContext";
 
 function MyBand() {
   const [activeTab, setActiveTab] = useState("settings");
+  const { user, setUser } = useContext(UserContext);
 
   function renderTab() {
     switch (activeTab) {
