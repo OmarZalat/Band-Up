@@ -18,6 +18,11 @@ import "@/styles/signup.css";
 import "@/styles/feedPost.css";
 import "@/styles/feedFriend.css";
 import "@/styles/createBand.css";
+import "@/styles/myBand.css";
+import "@/styles/myBandNavigationBar.css";
+import "@/styles/myBandSettingsTab.css";
+import "@/styles/myBandMembersTab.css";
+import "@/styles/myBandAboutTab.css";
 import { UserContext } from "@/context/userContext";
 import { useState } from "react";
 

@@ -40,6 +40,9 @@ function Feed() {
               <Link href="#" className="left_wrapper_element">
                 Join Band
               </Link>
+              <Link href="myBand" className="left_wrapper_element">
+                My Band
+              </Link>
               <hr />
               <Link href="about" className="left_wrapper_element">
                 About Us

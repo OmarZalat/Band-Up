@@ -1,0 +1,35 @@
+#myband_navigation_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 7%;
+  background-color: green;
+}
+
+#myband_navigation_bar ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  text-decoration: none;
+}
+
+#myband_navigation_bar li a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  padding: 20px;
+  transition: 0.5s;
+}
+
+#myband_navigation_bar li a:hover {
+  background-color: orange;
+}
+
+#myband_navigation_bar li a:focus {
+  background-color: orange;
+}
