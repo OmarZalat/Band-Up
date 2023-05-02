@@ -10,9 +10,7 @@ function MyBandAboutTab() {
           <div id="about_card_band_genre">
             <h3>Band Genre:</h3>
           </div>
-          <div id="about_card_band_location">
-            <h3>Location:</h3>
-          </div>
+
           <div id="about_card_band_member_number">
             <h3>Number of Members:</h3>
           </div>

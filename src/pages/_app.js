@@ -25,7 +25,8 @@ import "@/styles/myBandMembersTab.css";
 import "@/styles/myBandAboutTab.css";
 import "@/styles/joinBand.css";
 import "@/styles/leftPanelNavigation.css";
-
+import "@/styles/joinBandCarousel.css";
+import "@/styles/joinBandCarouselCard.css";
 import { UserContext } from "@/context/userContext";
 import { useState } from "react";
 

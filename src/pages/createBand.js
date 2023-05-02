@@ -3,6 +3,7 @@ import { UserContext } from "@/context/userContext";
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import Footer from "@/components/UI/footer";
+import LeftPanelNavigation from "@/components/UI/leftPanelNavigation";
 
 function CreateBand() {
   const router = useRouter();
@@ -76,50 +77,57 @@ function CreateBand() {
 
   return (
     <>
-      <div id="container">
-        <form id="create_band_form">
-          <div id="name_wrapper">
-            <input
-              id="name_input"
-              type="text"
-              placeholder="Band Name"
-              value={formData.name}
-              onChange={handleNameChange}
-              required
-            />
-            {nameError && <div className="error">{nameError}</div>}
-          </div>
+      <div id="create_band_container">
+        <LeftPanelNavigation />
+        <div id="create_band_container_wrapper">
+          <form id="create_band_form">
+            <div id="name_wrapper">
+              <label>Band Name</label>
+              <input
+                id="name_input"
+                type="text"
+                value={formData.name}
+                onChange={handleNameChange}
+                required
+              />
+              {nameError && <div className="error">{nameError}</div>}
+            </div>
 
-          <div id="bio_wrapper">
-            <textarea
-              id="bio_input"
-              placeholder="Band Bio"
-              value={formData.bio}
-              onChange={handleBioChange}
-              required
-            />
-            {bioError && <div className="error">{bioError}</div>}
-          </div>
+            <div id="bio_wrapper">
+              <label>Band Bio</label>
+              <textarea
+                id="bio_input"
+                value={formData.bio}
+                onChange={handleBioChange}
+                required
+              />
+              {bioError && <div className="error">{bioError}</div>}
+            </div>
 
-          <div id="tag_wrapper">
-            <select
-              id="tagID"
-              required
-              name="Genre"
-              value={formData.tagID}
-              onChange={handleTagChange}
+            <div id="tag_wrapper">
+              <select
+                id="tagID"
+                required
+                name="Genre"
+                value={formData.tagID}
+                onChange={handleTagChange}
+              >
+                <option value="" disabled>
+                  Genre
+                </option>
+                {tagOptions}
+              </select>
+            </div>
+
+            <button
+              id="create_band_button"
+              type="submit"
+              onClick={handleCreate}
             >
-              <option value="" disabled>
-                Genre
-              </option>
-              {tagOptions}
-            </select>
-          </div>
-
-          <button id="create_band_button" type="submit" onClick={handleCreate}>
-            Create
-          </button>
-        </form>
+              Create
+            </button>
+          </form>
+        </div>
       </div>
       <Footer></Footer>
     </>

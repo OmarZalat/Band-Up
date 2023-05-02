@@ -2,10 +2,11 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import JoinBandCarouselCard from "./joinBandCarouselCard";
 
-function JoinFeedCarousel() {
+function JoinBandCarousel() {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -19,7 +20,7 @@ function JoinFeedCarousel() {
     return (
       <div
         className={className}
-        style={{ ...style, display: "block", background: "red" }}
+        style={{ ...style, display: "block" }}
         onClick={onClick}
       >
         <i className="fas fa-chevron-left"></i>
@@ -32,7 +33,7 @@ function JoinFeedCarousel() {
     return (
       <div
         className={className}
-        style={{ ...style, display: "block", background: "red" }}
+        style={{ ...style, display: "block" }}
         onClick={onClick}
       >
         <i className="fas fa-chevron-right"></i>
@@ -41,24 +42,13 @@ function JoinFeedCarousel() {
   }
 
   return (
-    <Slider {...settings}>
-      <div>
-        <img src="http://placekitten.com/g/400/200" alt="Kitten 1" />
-      </div>
-      <div>
-        <img src="http://placekitten.com/g/400/200" alt="Kitten 2" />
-      </div>
-      <div>
-        <img src="http://placekitten.com/g/400/200" alt="Kitten 3" />
-      </div>
-      <div>
-        <img src="http://placekitten.com/g/400/200" alt="Kitten 4" />
-      </div>
-      <div>
-        <img src="http://placekitten.com/g/400/200" alt="Kitten 5" />
-      </div>
+    <Slider {...settings} className="carousel_slider">
+      <JoinBandCarouselCard />
+      <JoinBandCarouselCard />
+      <JoinBandCarouselCard />
+      <JoinBandCarouselCard />
     </Slider>
   );
 }
 
-export default JoinFeedCarousel;
+export default JoinBandCarousel;

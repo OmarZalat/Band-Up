@@ -4,7 +4,8 @@
   justify-content: space-between;
   width: 100%;
   height: 7%;
-  background-color: green;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 #myband_navigation_bar ul {
@@ -21,15 +22,17 @@
   text-decoration: none;
   font-weight: bold;
   font-size: 20px;
-  color: white;
+  color: orange;
   padding: 20px;
   transition: 0.5s;
 }
 
 #myband_navigation_bar li a:hover {
   background-color: orange;
+  color: white;
 }
 
 #myband_navigation_bar li a:focus {
   background-color: orange;
+  color: white;
 }

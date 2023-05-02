@@ -14,6 +14,9 @@ function LeftPanelNavigation() {
           <Link href="feed" className="left_wrapper_element">
             feed
           </Link>
+          <Link href="profile" className="left_wrapper_element">
+            Profile
+          </Link>
           <Link href="#" className="left_wrapper_element">
             Notifications
           </Link>

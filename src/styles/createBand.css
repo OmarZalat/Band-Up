@@ -1,24 +1,33 @@
-#container {
+#create_band_container {
+  display: flex;
   width: 100%;
   height: 100vh;
+}
+
+#create_band_container_wrapper {
+  width: 80%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  background-color: #f0f2f5;
 }
 
 #create_band_form {
-  width: 30%;
-  height: 50%;
-  background-color: grey;
+  width: 50%;
+  height: 60%;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 60px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  font-size: 20px;
 }
 
 #name_wrapper {
-  background-color: red;
   width: 50%;
   height: 10%;
 }
@@ -54,8 +63,18 @@
 #create_band_button {
   width: 20%;
   height: 7%;
+  transition: 0.5s;
+  border: none;
+  background-color: #e6e6e6;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 #create_band_button:hover {
   cursor: pointer;
+  background-color: orange;
+  color: white;
+}
+.error {
+  color: red;
 }
