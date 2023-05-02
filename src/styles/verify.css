@@ -1,0 +1,23 @@
+#verify-main h1 {
+  text-align: center;
+}
+#verify-logo {
+  font-size: 100px;
+  text-align: center;
+  margin-top: 20px;
+  color: green;
+}
+#login-redirect {
+  text-align: center;
+}
+#verify-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
