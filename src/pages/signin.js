@@ -19,6 +19,10 @@ function SignIn() {
     window.location.href = "/signup";
   }
 
+  function handleForgotPassword() {
+    router.push("/forgotPassword");
+  }
+
   async function submitHandler(event) {
     event.preventDefault();
 
@@ -98,7 +102,12 @@ function SignIn() {
                 <button id="signinBtn" onClick={submitHandler}>
                   Sign in
                 </button>
-                <p id="forgotten-password-hyperlink">Forgotten password?</p>
+                <p
+                  id="forgotten-password-hyperlink"
+                  onClick={handleForgotPassword}
+                >
+                  Forgotten password?
+                </p>
               </div>
               <hr id="line-break" />
               <div className="spacing-1"></div>

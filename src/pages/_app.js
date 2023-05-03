@@ -28,6 +28,8 @@ import "@/styles/joinBand.css";
 import "@/styles/leftPanelNavigation.css";
 import "@/styles/joinBandCarousel.css";
 import "@/styles/joinBandCarouselCard.css";
+import "@/styles/forgotPassword.css";
+import "@/styles/passwordRecovery.css";
 import { UserContext } from "@/context/userContext";
 import { useState } from "react";
 

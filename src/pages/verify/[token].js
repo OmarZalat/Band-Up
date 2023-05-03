@@ -23,7 +23,7 @@ function Verify() {
         <GoVerified />
       </p>
       <h2 id="login-redirect">
-        <Link href="/signin">Continue to signin</Link>
+        <Link href="/passwordRecovery">Continue to password recovery page</Link>
       </h2>
       <div id="verify-footer">{/* <Footer></Footer> */}</div>
     </div>
