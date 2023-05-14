@@ -7,6 +7,23 @@ function MyBandSettingsTab() {
   });
   const [nameError, setNameError] = useState("");
   const [bioError, setBioError] = useState("");
+  const [memberRoleOptions, setMemberRoleOptions] = useState([
+    "Pop",
+    "Dance",
+    "Hip-hop",
+    "R&B",
+    "Latin",
+    "Rock",
+    "Metal",
+    "Country",
+    "Folk / Acoustic",
+    "Classical",
+    "Jazz",
+    "Blues",
+    "Easy Listening",
+    "New Age",
+    "World / Traditional Folk",
+  ]);
 
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -51,7 +68,16 @@ function MyBandSettingsTab() {
             <label>Members' Roles</label>
             <div id="settings_card_role_wrapper">
               <select id="settings_edit_member"></select>
-              <select id="settings_edit_member_role"></select>
+              <select id="settings_edit_member_role">
+                <option value="" disabled selected hidden>
+                  Role
+                </option>
+                {memberRoleOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
               <button id="settings_edit_member_role_button">Change</button>
             </div>
           </div>
