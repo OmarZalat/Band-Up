@@ -24,6 +24,7 @@ model BandPosts {
   content      String
   createdAt    DateTime       @default(now())
   bandDataId   String?
+  type         Type
   BandData     BandData?      @relation(fields: [bandDataId], references: [id])
   Likes        Likes[]
   PostComments PostComments[]
@@ -79,4 +80,9 @@ enum Role {
   MEMBER
   PUBLISHER
   LEADER
+}
+
+enum Type {
+  INDIVIDUAL
+  BAND
 }
