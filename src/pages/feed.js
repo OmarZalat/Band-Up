@@ -11,7 +11,7 @@ function Feed() {
   const { user, setUser } = useContext(UserContext);
   const [post, setPost] = useState({
     content: "",
-    image: "",
+    imageBase64: "",
   });
   useEffect(() => {
     if (!user) {
@@ -30,7 +30,7 @@ function Feed() {
     }
     reader.onloadend = async () => {
       console.log(reader.result);
-      setPost({ ...post, image: reader.result });
+      setPost({ ...post, imageBase64: reader.result });
     };
   }
   async function submitPost(e) {
@@ -38,7 +38,11 @@ function Feed() {
     const result = await fetch("/api/createBandPost", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...post, bandDataId: user.bandDataId }),
+      body: JSON.stringify({
+        ...post,
+        bandDataId: user.bandDataId,
+        type: "INDIVIDUAL",
+      }),
     });
   }
 
@@ -52,31 +56,31 @@ function Feed() {
               <div id="middle_wrapper_header">
                 <h1>Feed</h1>
               </div>
-              {user.role !== "MEMBER" && (
-                <form id="post_action">
-                  <div id="post_action_compose_new">
-                    <textarea
-                      id="compose_new_textarea"
-                      placeholder="Compose new post"
-                      value={post.content}
-                      onChange={(e) =>
-                        setPost({ ...post, content: e.currentTarget.value })
-                      }
-                    ></textarea>
-                  </div>
-                  <div id="post_action_add_buttons">
-                    <input
-                      id="add_photo"
-                      type="file"
-                      onChange={handleImageUpload}
-                    />
-                    <button id="add_video">Add Video</button>
-                    <button id="post" onClick={submitPost}>
-                      Post
-                    </button>
-                  </div>
-                </form>
-              )}
+
+              <form id="post_action">
+                <div id="post_action_compose_new">
+                  <textarea
+                    id="compose_new_textarea"
+                    placeholder="Compose new post"
+                    value={post.content}
+                    onChange={(e) =>
+                      setPost({ ...post, content: e.currentTarget.value })
+                    }
+                  ></textarea>
+                </div>
+                <div id="post_action_add_buttons">
+                  <input
+                    id="add_photo"
+                    type="file"
+                    onChange={handleImageUpload}
+                  />
+                  <button id="add_video">Add Video</button>
+                  <button id="post" onClick={submitPost}>
+                    Post
+                  </button>
+                </div>
+              </form>
+
               <div id="content_wrapper">
                 <div id="content_test">
                   <FeedPost></FeedPost>

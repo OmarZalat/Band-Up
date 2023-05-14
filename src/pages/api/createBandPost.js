@@ -10,7 +10,7 @@ var imagekit = new ImageKit({
 });
 
 export default async function handler(req, res) {
-  const { imageBase64, content, bandDataId } = req.body;
+  const { imageBase64, content, bandDataId, type } = req.body;
   console.log(imageBase64, content, bandDataId);
   const url = await imagekit.upload({
     file: imageBase64,
@@ -19,7 +19,8 @@ export default async function handler(req, res) {
   const response = await prisma.bandPosts.create({
     data: {
       content,
-      image: url,
+      image: url.url,
+      type,
       BandData: {
         connect: {
           id: bandDataId,
