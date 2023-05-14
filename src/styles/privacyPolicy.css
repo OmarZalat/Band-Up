@@ -1,0 +1,13 @@
+#privacy_policy_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#privacy_policy {
+  width: 70%;
+  height: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
