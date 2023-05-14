@@ -7,7 +7,6 @@ export default async function handler(req, res) {
   try {
     const { email, password } = req.body.formData;
     console.log(password);
-    const bcrypt = require("bcrypt");
     const saltRounds = 10;
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
     console.log(hashedPassword);
@@ -42,6 +41,6 @@ export default async function handler(req, res) {
     }
   } catch (e) {
     console.log(e);
-    res.send(e);
+    res.send(false);
   }
 }

@@ -9,6 +9,7 @@ import { UserContext } from "@/context/userContext";
 
 function Profile() {
   const { user, setUser } = useContext(UserContext);
+  console.log(user);
   return (
     <div>
       <NavigationBar />
