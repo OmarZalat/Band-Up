@@ -8,21 +8,17 @@ function MyBandSettingsTab() {
   const [nameError, setNameError] = useState("");
   const [bioError, setBioError] = useState("");
   const [memberRoleOptions, setMemberRoleOptions] = useState([
-    "Pop",
-    "Dance",
-    "Hip-hop",
-    "R&B",
-    "Latin",
-    "Rock",
-    "Metal",
-    "Country",
-    "Folk / Acoustic",
-    "Classical",
-    "Jazz",
-    "Blues",
-    "Easy Listening",
-    "New Age",
-    "World / Traditional Folk",
+    "Vocalist",
+    "Lead Guitarist",
+    "Rythem Guitarist",
+    "Bassist",
+    "Drummer",
+    "Keyboardist",
+    "Pianist",
+    "Percussionist",
+    "Horn Player",
+    "Wind Player",
+    "Songwriter",
   ]);
 
   const handleNameChange = (event) => {
