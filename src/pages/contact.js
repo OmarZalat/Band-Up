@@ -80,7 +80,7 @@ function Contact() {
                   <AiOutlineMail size={35}></AiOutlineMail>
                 </div>
                 <div className="description-2-text">
-                  <p>bandupsupp@gmail.com</p>
+                  <p>bandupsup@gmail.com</p>
                 </div>
               </div>
               <div className="description-2-wrapper">

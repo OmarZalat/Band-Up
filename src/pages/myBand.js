@@ -5,13 +5,17 @@ import NavigationBar from "@/components/UI/navigationBar";
 import MyBandMembersTab from "@/components/MyBand/myBandMembersTab";
 import MyBandAboutTab from "@/components/MyBand/myBandAboutTab";
 import { UserContext } from "@/context/userContext";
+import MyBandFeaturedUI from "@/components/MyBand/myBandFeaturedTab";
+import MyBandFeaturedTab from "@/components/MyBand/myBandFeaturedTab";
 
 function MyBand() {
-  const [activeTab, setActiveTab] = useState("settings");
+  const [activeTab, setActiveTab] = useState("featured");
   const { user, setUser } = useContext(UserContext);
 
   function renderTab() {
     switch (activeTab) {
+      case "featured":
+        return <MyBandFeaturedTab />;
       case "settings":
         return <MyBandSettingsTab />;
       case "members":

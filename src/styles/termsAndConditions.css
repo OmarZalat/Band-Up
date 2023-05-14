@@ -1,0 +1,13 @@
+#terms_and_conditions_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#terms_and_conditions {
+  width: 70%;
+  height: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
