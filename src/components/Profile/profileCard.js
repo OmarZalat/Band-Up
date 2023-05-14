@@ -1,6 +1,7 @@
 import { UserContext } from "@/context/userContext";
 import { useContext } from "react";
-
+const defaultBg =
+  "https://ik.imagekit.io/0tfb5ok46/Default-Profile-Picture-Transparent-Image.png?updatedAt=1684094895997";
 function ProfileCard() {
   const { user, setUser } = useContext(UserContext);
 
@@ -8,7 +9,14 @@ function ProfileCard() {
     <>
       {" "}
       <div id="user_card">
-        <div id="user_card_profile_picture">
+        <div
+          id="user_card_profile_picture"
+          style={{
+            backgroundImage: user?.profilePicture
+              ? `url(${user?.profilePicture})`
+              : `url("${defaultBg}")`,
+          }}
+        >
           <div id="user_card_button_wrapper">
             <div id="follow_unfollow_button">follow {user?.FName}</div>
             <div id="more_button">▪▪▪</div>

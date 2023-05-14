@@ -3,6 +3,9 @@ import ProfileBackdrop from "./profileBackdrop";
 import ProfileModal from "./profileModal";
 import { UserContext } from "@/context/userContext";
 
+const defaultBanner =
+  "https://ik.imagekit.io/0tfb5ok46/image_1_.png?updatedAt=1684094946375";
+
 function ProfileHeader() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { user, setUser } = useContext(UserContext);
@@ -16,7 +19,14 @@ function ProfileHeader() {
   }
   return (
     <>
-      <div id="profile_header">
+      <div
+        id="profile_header"
+        style={{
+          backgroundImage: user?.backgroundImage
+            ? `url(${user?.backgroundImage})`
+            : `url("${defaultBanner}")`,
+        }}
+      >
         <div id="profile_header_info">
           <div id="info_1">
             <p className="info_1_name">
