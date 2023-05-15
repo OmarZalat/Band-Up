@@ -45,7 +45,7 @@ function Footer() {
       </div>
       <div id="socials-div-footer">
         <Link
-          href="https://discord.gg/9TkwpNk2pf"
+          href="https://discord.gg/8dv2hTpENZ"
           className="socials_icons"
           target="_blank"
         >
