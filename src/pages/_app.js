@@ -32,6 +32,8 @@ import "@/styles/forgotPassword.css";
 import "@/styles/passwordRecovery.css";
 import "@/styles/myBandPostingUI.css";
 import "@/styles/myBandFeaturedTab.css";
+import "@/styles/termsAndConditions.css";
+import "@/styles/privacyPolicy.css";
 import { UserContext } from "@/context/userContext";
 import { useState } from "react";
 

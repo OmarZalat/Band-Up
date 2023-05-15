@@ -72,7 +72,7 @@ function SignIn() {
       <div id="title-signup-page">
         <h1>Band Up</h1>
         <br />
-        <h2>Bringing the musical community into one place.</h2>
+        <h2>Your Music Journey Starts Here.</h2>
       </div>
       <div id="main-card-container">
         <div id="main-card">

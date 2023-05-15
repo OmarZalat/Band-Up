@@ -62,7 +62,7 @@ function Contact() {
             <div id="description-1">
               <h2>Contact Information</h2>
               <p>
-                Fill up the form and out Team will get back to you within 24
+                Fill up the form and our Team will get back to you within 24
                 hours.
               </p>
             </div>

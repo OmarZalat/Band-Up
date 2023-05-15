@@ -15,7 +15,7 @@ function Home() {
       <div id="title-home-page">
         <h1>Band Up</h1>
         <br />
-        <h2>The Musicians&apos; Social Network</h2>
+        <h2>Your Music Journey Starts Here</h2>
       </div>
       <div id="home-page-image-1">
         <Image src={image1}></Image>
@@ -82,7 +82,7 @@ function Home() {
             <h1>for all</h1>
             <p>
               You are never too old to start building your talents. Band Up
-              welcomes everyone that is passionate about persuing a career or
+              welcomes everyone that is passionate about pursuing a career or
               hobby in playing music.
             </p>
           </div>

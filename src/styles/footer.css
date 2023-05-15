@@ -85,22 +85,10 @@
   gap: 100px;
   width: 40%;
   height: 20%;
-  margin-right: 10px;
+  margin-right: 100px;
   margin-top: 3%;
 }
 
-#socials-div-footer .fa {
-  padding: 20px;
-  font-size: 20px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
+.socials_icons {
   color: white;
-}
-
-#socials-div-footer .fa:hover {
-  /* opacity: 0.7; */
-  transition: 0.5s;
-  background-color: whitesmoke;
-  color: orange;
 }
