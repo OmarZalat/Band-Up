@@ -10,7 +10,7 @@ function MyBandSettingsTab() {
   const [memberRoleOptions, setMemberRoleOptions] = useState([
     "Vocalist",
     "Lead Guitarist",
-    "Rythem Guitarist",
+    "Rhythm Guitarist",
     "Bassist",
     "Drummer",
     "Keyboardist",

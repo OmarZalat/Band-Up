@@ -18,13 +18,13 @@ function Home() {
         <h2>Your Music Journey Starts Here</h2>
       </div>
       <div id="home-page-image-1">
-        <Image src={image1}></Image>
+        <Image src={image1} alt="band_1"></Image>
       </div>
       <div className="spacing-div-1"></div>
       <div className="image-description-container">
         <div className="image-description-container-wrapper">
           <div className="image">
-            <Image src={image2}></Image>
+            <Image src={image2} alt="band_2"></Image>
           </div>
           <div className="description">
             <h1>
@@ -55,7 +55,7 @@ function Home() {
             </p>
           </div>
           <div className="image">
-            <Image src={image3} width={570} height={311} />
+            <Image src={image3} width={570} height={311} alt="band_3" />
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@ function Home() {
       <div className="image-description-container">
         <div className="image-description-container-wrapper">
           <div className="image">
-            <Image src={image4} width={570} height={311} />
+            <Image src={image4} width={570} height={311} alt="band_4" />
           </div>
           <div className="description">
             <h1>chat and share your passion</h1>
@@ -87,7 +87,7 @@ function Home() {
             </p>
           </div>
           <div className="image">
-            <Image src={image5} width={570} height={311} />
+            <Image src={image5} width={570} height={311} alt="band_5" />
           </div>
         </div>
       </div>

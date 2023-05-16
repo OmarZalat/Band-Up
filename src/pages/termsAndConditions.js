@@ -35,9 +35,8 @@ function TermsAndConditions() {
 
             <li>
               This website uses cookies to monitor browsing preferences. If you
-              do allow cookies to be used, the following personal information
-              may be stored by us for use by third parties: [insert list of
-              information stored by cookies, if any].
+              do allow cookies to be used, some information about users will be
+              stored.
             </li>
             <br></br>
 
@@ -94,7 +93,7 @@ function TermsAndConditions() {
 
             <li>
               Your use of this website and any dispute arising out of such use
-              of the website is subject to the laws of [insert country/state].
+              of the website is subject to the laws of Lebanon.
             </li>
             <br></br>
           </ol>
