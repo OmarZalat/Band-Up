@@ -2,12 +2,16 @@ import telephone from "../../public/telephone.png";
 import mail from "../../public/mail.png";
 import location from "../../public/location.png";
 import NavigationBar from "../../src/components/UI/navigationBar";
+import Link from "next/link";
 import Footer from "../../src/components/UI/footer";
 import { useRef } from "react";
 import Image from "next/image";
 import { BsTelephone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
+import { BsDiscord } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
+import { BsTwitter } from "react-icons/bs";
 function Contact() {
   const firstNameInput = useRef();
   const lastNameInput = useRef();
@@ -94,9 +98,27 @@ function Contact() {
             </div>
             <div id="description-3">
               <div id="socials-div">
-                <a href="#" className="fa fa-facebook fa-1x"></a>
-                <a href="#" className="fa fa-twitter fa-1x"></a>
-                <a href="#" className="fa fa-instagram fa-1x"></a>
+                <Link
+                  href="https://discord.gg/8dv2hTpENZ"
+                  className="socials_icons_contact_information"
+                  target="_blank"
+                >
+                  <BsDiscord size={25} />
+                </Link>
+                <Link
+                  href="https://twitter.com/BandUp_LB"
+                  className="socials_icons_contact_information"
+                  target="_blank"
+                >
+                  <BsTwitter size={25} />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/bandup_lb/"
+                  className="socials_icons_contact_information"
+                  target="_blank"
+                >
+                  <BsInstagram size={25} />
+                </Link>
               </div>
             </div>
           </div>

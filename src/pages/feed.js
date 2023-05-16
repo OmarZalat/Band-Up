@@ -9,6 +9,8 @@ import LeftPanelNavigation from "@/components/UI/leftPanelNavigation";
 function Feed() {
   const router = useRouter();
   const { user, setUser } = useContext(UserContext);
+  const [loading, setLoading] = useState(false); // Loading state variable
+
   const [post, setPost] = useState({
     content: "",
     imageBase64: "",
@@ -35,15 +37,25 @@ function Feed() {
   }
   async function submitPost(e) {
     e.preventDefault();
-    const result = await fetch("/api/createBandPost", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...post,
-        bandDataId: user.bandDataId,
-        type: "INDIVIDUAL",
-      }),
-    });
+    setLoading(true); // Start loading animation
+
+    try {
+      const result = await fetch("/api/createBandPost", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...post,
+          bandDataId: user.bandDataId,
+          type: "INDIVIDUAL",
+        }),
+      });
+
+      // Handle the response from the server
+    } catch (error) {
+      // Handle the error
+    } finally {
+      setLoading(false); // Stop loading animation
+    }
   }
 
   return (
@@ -110,6 +122,8 @@ function Feed() {
           </div>
         </div>
       ) : null}
+      {loading && <div className="loading-animation">Loading...</div>}{" "}
+      {/* Display loading animation when loading is true */}
     </>
   );
 }

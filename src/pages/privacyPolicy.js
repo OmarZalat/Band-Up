@@ -104,7 +104,8 @@ function PrivacyPolicy() {
             <li>
               If you have previously agreed to us using your personal
               information for direct marketing purposes, you may change your
-              mind at any time by emailing us at [insert email address].
+              mind at any time by emailing us at{" "}
+              <a href="mailto:bandupsup@gmail.com">bandupsup@gmail.com</a>.
             </li>
           </ul>
           <p>
@@ -115,7 +116,8 @@ function PrivacyPolicy() {
           <p>
             Overall, we value your privacy and are committed to protecting your
             personal information. If you have any questions or concerns about
-            our privacy policy, please contact us at [insert email address].
+            our privacy policy, please contact us at{" "}
+            <a href="mailto:bandupsup@gmail.com">bandupsup@gmail.com</a>.
           </p>
         </div>
       </div>
