@@ -56,7 +56,7 @@
   height: 300px;
   background-color: grey;
   border-radius: 50%;
-  background-image: url(../../public/profile-pic.jpeg);
+  /* background-image: url(../../public/profile-pic.jpeg); */
   background-size: cover;
   background-position: center;
 }
