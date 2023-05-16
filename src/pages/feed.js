@@ -104,14 +104,7 @@ function Feed() {
               </div>
               <div id="friends_wrapper">
                 <h1>Friends</h1>
-                <FeedFriend></FeedFriend>
-                <FeedFriend></FeedFriend>
-                <FeedFriend></FeedFriend>
-                <FeedFriend></FeedFriend>
-                <FeedFriend></FeedFriend>
-                <FeedFriend></FeedFriend>
-                <FeedFriend></FeedFriend>
-                <FeedFriend></FeedFriend>
+                {/* <FeedFriend /> */}
               </div>
             </div>
           </div>
