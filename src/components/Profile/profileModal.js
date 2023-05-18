@@ -3,10 +3,36 @@ import { UserContext } from "@/context/userContext";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import countries from "./countries";
+import Select from "react-select";
+const defaultBg =
+  "https://ik.imagekit.io/0tfb5ok46/Default-Profile-Picture-Transparent-Image.png?updatedAt=1684094895997";
 
 function ProfileModal(props) {
   const { user, setUser } = useContext(UserContext);
   const router = useRouter();
+  const [tags, setTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch tags from the API endpoint
+    fetch("/api/getTags")
+      .then((response) => response.json())
+      .then((data) => {
+        setTags(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching tags:", error);
+        setIsLoading(false);
+      });
+  }, []);
+
+  const handleTagChange = (selectedOptions) => {
+    if (selectedOptions.length <= 3) {
+      setSelectedTags(selectedOptions);
+    }
+  };
 
   // Create a state variable to hold the updated user data
   const [updatedUser, setUpdatedUser] = useState(user);
@@ -36,7 +62,6 @@ function ProfileModal(props) {
   const handleCountryChange = (event) => {
     const country = event.target.value;
     setUpdatedUser({ ...user, country });
-    // console.log(user);
   };
 
   function cancelHandler() {
@@ -57,7 +82,9 @@ function ProfileModal(props) {
       LName: updatedUser.LName,
       country: updatedUser.country,
       bio: updatedUser.bio,
+      tags: updatedUser.tags,
     };
+
     //backend code should be implemented heere
     const res = await fetch("/api/updateUser", {
       method: "POST",
@@ -67,6 +94,7 @@ function ProfileModal(props) {
 
     // Update the user data in the UserContext
     setUser(updatedUser);
+    console.log(updatedUser);
 
     // console.log(`user: ${user}`);
     // console.log(`modalFormData ${modalFormData}`);
@@ -85,7 +113,14 @@ function ProfileModal(props) {
         </div>
         <div className="modal_main">
           <div className="modal_main_left">
-            <div className="modal_profile_picture_edit">
+            <div
+              className="modal_profile_picture_edit"
+              style={{
+                backgroundImage: user?.profilePicture
+                  ? `url(${user?.profilePicture})`
+                  : `url("${defaultBg}")`,
+              }}
+            >
               <button className="modal_profile_picture_edit_button">
                 Update Image
               </button>
@@ -137,18 +172,36 @@ function ProfileModal(props) {
               </div>
             </div>
             <div className="modal_cell_3">
-              <label>Country</label>
-              <select
-                id="modal_edit_country"
-                value={updatedUser?.country}
-                onChange={handleCountryChange}
-              >
-                {countries.map((country) => (
-                  <option key={country} value={country}>
-                    {country}
-                  </option>
-                ))}
-              </select>
+              <div className="modal_cell_3_left">
+                <label>Country</label>
+                <select
+                  id="modal_edit_country"
+                  value={updatedUser?.country}
+                  onChange={handleCountryChange}
+                >
+                  {countries.map((country) => (
+                    <option key={country} value={country}>
+                      {country}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="modal_cell_3_right">
+                <label>Interests (up to 3)</label>
+                {isLoading ? (
+                  <p>Loading tags...</p>
+                ) : (
+                  <Select
+                    options={tags.map((tag) => ({
+                      value: tag.id,
+                      label: tag.name,
+                    }))}
+                    isMulti
+                    value={selectedTags}
+                    onChange={handleTagChange}
+                  />
+                )}
+              </div>
             </div>
             <div className="modal_cell_4">
               <label>Bio</label>

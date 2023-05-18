@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+const defaultBg =
+  "https://ik.imagekit.io/0tfb5ok46/Default-Profile-Picture-Transparent-Image.png?updatedAt=1684094895997";
 
 function NavigationBar() {
   const router = useRouter();
@@ -53,7 +55,15 @@ function NavigationBar() {
         ) : (
           <div id="nav-bar-right-container">
             <div id="nav-bar-right-container-profile-container">
-              <img src="../../public/profile-pic.jpeg" />
+              <div
+                id="nav_bar_profile_container_image"
+                style={{
+                  backgroundImage: user?.profilePicture
+                    ? `url(${user?.profilePicture})`
+                    : `url("${defaultBg}")`,
+                }}
+              ></div>
+              {/* <img src="../../public/profile-pic.jpeg" /> */}
               <div id="nav-bar-right-container-profile">
                 <h4 className="h4-class">Profile ▼</h4>
                 <div id="dropdown">
