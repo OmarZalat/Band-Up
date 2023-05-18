@@ -1,0 +1,8 @@
+.termsAndConditionsCheckBox {
+  color: orange;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.termsAndConditionsCheckBox a {
+  text-decoration: none;
+}

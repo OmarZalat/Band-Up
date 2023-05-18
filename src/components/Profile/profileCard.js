@@ -20,8 +20,7 @@ function ProfileCard() {
               : `url("${defaultBg}")`,
           }}
         >
-          {isOwnerProfile ? // Display nothing when it's the owner's profile
-          null : (
+          {isOwnerProfile ? null : ( // Display nothing when it's the owner's profile
             <div id="user_card_button_wrapper">
               <div id="follow_unfollow_button">follow {user?.FName}</div>
               <div id="more_button">▪▪▪</div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import NewsletterCheckbox from "../../src/components/UI/newsLetterCheckBox";
 import { useRouter } from "next/router";
 import countries from "@/components/Profile/countries";
+import TermsAndConditionsCheckBox from "@/components/UI/termsAndConditionsCheckBox";
 
 function SignUp() {
   const [isChecked, setIsChecked] = useState(false);
@@ -274,6 +275,7 @@ function SignUp() {
                 </button>
               </div>
             </div>
+            <TermsAndConditionsCheckBox />
             <NewsletterCheckbox
               isChecked={isChecked}
               setIsChecked={() => setIsChecked((prev) => !prev)}
