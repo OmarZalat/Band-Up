@@ -111,13 +111,10 @@ export default async function handler(req, res) {
           `userToken=${sessionToken}; Path=/; Expires=${expires.toUTCString()}; HttpOnly`
         );
 
-        res.json(response);
+        res.send(response);
       } else {
         res.send(false);
       }
-
-      // Return the response
-      res.status(200).json({ message: "Cookie set!" });
     }
   } catch (e) {
     console.log(e);
