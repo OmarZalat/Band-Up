@@ -1,11 +1,7 @@
-import { UserContext } from "@/context/userContext";
-import { useContext } from "react";
 const defaultBg =
   "https://ik.imagekit.io/0tfb5ok46/Default-Profile-Picture-Transparent-Image.png?updatedAt=1684094895997";
 
-function ProfileCard() {
-  const { user, setUser } = useContext(UserContext);
-
+function ProfileCard({ FName, bio, profilePicture }) {
   // Check if the user is viewing their own profile
   const isOwnerProfile = true; // Replace this with your logic to determine if it's the owner's profile
 
@@ -15,14 +11,14 @@ function ProfileCard() {
         <div
           id="user_card_profile_picture"
           style={{
-            backgroundImage: user?.profilePicture
-              ? `url(${user?.profilePicture})`
+            backgroundImage: profilePicture
+              ? `url(${profilePicture})`
               : `url("${defaultBg}")`,
           }}
         >
           {isOwnerProfile ? null : ( // Display nothing when it's the owner's profile
             <div id="user_card_button_wrapper">
-              <div id="follow_unfollow_button">follow {user?.FName}</div>
+              <div id="follow_unfollow_button">follow {FName}</div>
               <div id="more_button">▪▪▪</div>
             </div>
           )}
@@ -30,7 +26,7 @@ function ProfileCard() {
         <div id="user_card_details_wrapper">
           <div id="user_card_about">
             <h1>About</h1>
-            <p>{user.bio}</p>
+            <p>{bio}</p>
           </div>
         </div>
 

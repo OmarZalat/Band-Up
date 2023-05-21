@@ -36,10 +36,23 @@ import "@/styles/termsAndConditions.css";
 import "@/styles/privacyPolicy.css";
 import "@/styles/termsAndConditionsCheckBox.css";
 import { UserContext } from "@/context/userContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }) {
   const [user, setUser] = useState(null);
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("/api/fetchUserData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      setUser(data.user);
+    })();
+  }, []);
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Component {...pageProps} />

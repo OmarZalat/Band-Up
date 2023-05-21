@@ -60,6 +60,16 @@ model UserData {
   Likes             Likes[]
   comments          PostComments[]
   BandData          BandData?      @relation(fields: [bandDataId], references: [id])
+  Session           Session[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String
+  user         UserData @relation(fields: [userDataId], references: [id])
+  userDataId   String   @unique
+  createdAt    DateTime @default(now())
+  expiry       DateTime
 }
 
 model Likes {

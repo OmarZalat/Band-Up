@@ -1,14 +1,13 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ProfileBackdrop from "./profileBackdrop";
 import ProfileModal from "./profileModal";
-import { UserContext } from "@/context/userContext";
 
 const defaultBanner =
   "https://ik.imagekit.io/0tfb5ok46/image_1_.png?updatedAt=1684094946375";
 
-function ProfileHeader() {
+function ProfileHeader({ LName, FName, country, backgroundImage }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  console.log(LName, FName, country, backgroundImage);
 
   function deleteHandler() {
     setModalIsOpen(!modalIsOpen);
@@ -22,17 +21,17 @@ function ProfileHeader() {
       <div
         id="profile_header"
         style={{
-          backgroundImage: user?.backgroundImage
-            ? `url(${user?.backgroundImage})`
+          backgroundImage: backgroundImage
+            ? `url(${backgroundImage})`
             : `url("${defaultBanner}")`,
         }}
       >
         <div id="profile_header_info">
           <div id="info_1">
             <p className="info_1_name">
-              {user?.FName} {user?.LName}
+              {FName} {LName}
             </p>
-            <p className="info_1_country">{user?.country}</p>
+            <p className="info_1_country">{country}</p>
           </div>
           <div id="info_2">
             <div id="share_button">share profile</div>
