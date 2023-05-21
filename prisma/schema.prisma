@@ -61,6 +61,22 @@ model UserData {
   comments          PostComments[]
   BandData          BandData?      @relation(fields: [bandDataId], references: [id])
   Session           Session[]
+  userDataId        String?
+  follower          Friendship[]   @relation("FollowerRelation")
+  following         Friendship[]   @relation("FollowingRelation")
+}
+
+model Friendship {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
+  // Foreign keys
+  followerId  String
+  followingId String
+
+  // Relationships
+  follower  UserData @relation("FollowerRelation", fields: [followerId], references: [id])
+  following UserData @relation("FollowingRelation", fields: [followingId], references: [id])
 }
 
 model Session {
