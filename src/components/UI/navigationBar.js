@@ -80,7 +80,15 @@ function NavigationBar() {
                     <Link href="#">Language</Link>
                   </div>
                   <div className="dropdown-content">
-                    <Link href="#">Sign Out</Link>
+                    <Link
+                      href="#"
+                      onClick={async () => {
+                        await fetch("/api/signOut");
+                        setUser(undefined);
+                      }}
+                    >
+                      Sign Out
+                    </Link>
                   </div>
                 </div>
               </div>
