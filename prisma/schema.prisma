@@ -21,7 +21,7 @@ model BandData {
 model BandPosts {
   id           String         @id @default(cuid())
   image        String?
-  content      String
+  content      String?
   createdAt    DateTime       @default(now())
   bandDataId   String?
   type         Type
