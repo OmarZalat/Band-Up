@@ -77,6 +77,8 @@ model Friendship {
   // Relationships
   follower  UserData @relation("FollowerRelation", fields: [followerId], references: [id])
   following UserData @relation("FollowingRelation", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId])
 }
 
 model Session {
