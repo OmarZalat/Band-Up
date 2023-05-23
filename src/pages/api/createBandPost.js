@@ -12,22 +12,36 @@ var imagekit = new ImageKit({
 export default async function handler(req, res) {
   const { imageBase64, content, bandDataId, type } = req.body;
   console.log(imageBase64, content, bandDataId);
-  const url = await imagekit.upload({
-    file: imageBase64,
-    fileName: content[0],
-  });
-  const response = await prisma.bandPosts.create({
-    data: {
-      content,
-      image: url.url,
-      type,
-      BandData: {
-        connect: {
-          id: bandDataId,
+  let url = null;
+  if (imageBase64) {
+    url = await imagekit.upload({
+      file: imageBase64,
+      fileName: content[0] || "image",
+    });
+  }
+  if (bandDataId) {
+    const response = await prisma.bandPosts.create({
+      data: {
+        content,
+        image: url?.url || undefined,
+        type,
+        BandData: {
+          connect: {
+            id: bandDataId,
+          },
         },
       },
-    },
-  });
+    });
+    res.send(response);
+  } else {
+    const response = await prisma.bandPosts.create({
+      data: {
+        content,
+        image: url?.url || undefined,
+        type,
+      },
+    });
+    res.send(response);
+  }
   console.log(url);
-  res.send(response);
 }

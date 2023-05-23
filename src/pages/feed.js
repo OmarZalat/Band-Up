@@ -22,6 +22,19 @@ function Feed() {
         query: { from: router.asPath },
       });
     }
+    async function FetchPosts() {
+      const res = await fetch("/api/fetchPost", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          page: 1,
+        }),
+      });
+      const data = await res.json();
+      return data;
+    }
+    const posts = FetchPosts();
+    console.log(posts);
   }, [user, router]);
 
   async function handleImageUpload(e) {
