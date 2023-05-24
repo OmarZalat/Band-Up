@@ -41,6 +41,7 @@ model PostComments {
 }
 
 model UserData {
+<<<<<<< Updated upstream
   id                String         @id @default(cuid())
   FName             String
   LName             String
@@ -79,15 +80,40 @@ model Friendship {
   following UserData @relation("FollowingRelation", fields: [followingId], references: [id])
 
   @@unique([followerId, followingId])
+=======
+  id                                          String         @id @default(cuid())
+  FName                                       String
+  LName                                       String
+  username                                    String?
+  image                                       String?
+  email                                       String         @unique
+  emailVerification                           Boolean
+  newsletterMember                            Boolean
+  password                                    String
+  country                                     String
+  DOB                                         String
+  gender                                      String
+  tags                                        String[]
+  bio                                         String?
+  bandDataId                                  String?
+  role                                        Role           @default(MEMBER)
+  userDataId                                  String?
+  Friendship_Friendship_followerIdToUserData  Friendship[]   @relation("Friendship_followerIdToUserData")
+  Friendship_Friendship_followingIdToUserData Friendship[]   @relation("Friendship_followingIdToUserData")
+  Likes                                       Likes[]
+  comments                                    PostComments[]
+  Session                                     Session?
+  BandData                                    BandData?      @relation(fields: [bandDataId], references: [id])
+>>>>>>> Stashed changes
 }
 
 model Session {
   id           String   @id @default(cuid())
-  sessionToken String
-  user         UserData @relation(fields: [userDataId], references: [id])
   userDataId   String   @unique
   createdAt    DateTime @default(now())
   expiry       DateTime
+  sessionToken String
+  user         UserData @relation(fields: [userDataId], references: [id])
 }
 
 model Likes {
@@ -102,6 +128,17 @@ model Tags {
   id       String     @id @default(cuid())
   name     String     @unique
   BandData BandData[]
+}
+
+model Friendship {
+  id                                        Int      @id @default(autoincrement())
+  createdAt                                 DateTime @default(now())
+  followerId                                String
+  followingId                               String
+  UserData_Friendship_followerIdToUserData  UserData @relation("Friendship_followerIdToUserData", fields: [followerId], references: [id])
+  UserData_Friendship_followingIdToUserData UserData @relation("Friendship_followingIdToUserData", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId])
 }
 
 enum Role {
