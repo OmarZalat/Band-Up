@@ -57,37 +57,33 @@ model UserData {
   bio               String?
   bandDataId        String?
   role              Role           @default(MEMBER)
-  Likes             Likes[]
-  comments          PostComments[]
-  BandData          BandData?      @relation(fields: [bandDataId], references: [id])
-  Session           Session[]
   userDataId        String?
   follower          Friendship[]   @relation("FollowerRelation")
   following         Friendship[]   @relation("FollowingRelation")
+  Likes             Likes[]
+  comments          PostComments[]
+  Session           Session?
+  BandData          BandData?      @relation(fields: [bandDataId], references: [id])
 }
 
 model Friendship {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-
-  // Foreign keys
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
   followerId  String
   followingId String
-
-  // Relationships
-  follower  UserData @relation("FollowerRelation", fields: [followerId], references: [id])
-  following UserData @relation("FollowingRelation", fields: [followingId], references: [id])
+  follower    UserData @relation("FollowerRelation", fields: [followerId], references: [id])
+  following   UserData @relation("FollowingRelation", fields: [followingId], references: [id])
 
   @@unique([followerId, followingId])
 }
 
 model Session {
   id           String   @id @default(cuid())
-  sessionToken String
-  user         UserData @relation(fields: [userDataId], references: [id])
   userDataId   String   @unique
   createdAt    DateTime @default(now())
   expiry       DateTime
+  sessionToken String
+  user         UserData @relation(fields: [userDataId], references: [id])
 }
 
 model Likes {

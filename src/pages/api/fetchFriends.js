@@ -7,13 +7,7 @@ export default async function handler(req, res) {
   const response = await prisma.friendship.findMany({
     select: {
       following: {
-        select: {
-          id: true,
-          image: true,
-          username: true,
-          FName: true,
-          LName: true,
-        },
+        select: { id: true, username: true, image: true },
       },
     },
     where: {

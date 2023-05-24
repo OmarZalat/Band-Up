@@ -86,6 +86,7 @@ function ProfileModal(props) {
     };
 
     //backend code should be implemented heere
+    console.log(tags);
     const res = await fetch("/api/updateUser", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

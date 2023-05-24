@@ -10,6 +10,8 @@ function Feed() {
   const router = useRouter();
   const { user, setUser } = useContext(UserContext);
   const [loading, setLoading] = useState(false); // Loading state variable
+  const [friends, setFriends] = useState();
+  const [posts, setPosts] = useState();
 
   const [post, setPost] = useState({
     content: "",
@@ -22,6 +24,18 @@ function Feed() {
         query: { from: router.asPath },
       });
     }
+    async function FetchFriends() {
+      const res = await fetch("/api/fetchFriends", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          followerId: user?.id,
+        }),
+      });
+      const data = await res.json();
+      setFriends(data);
+    }
+
     async function FetchPosts() {
       const res = await fetch("/api/fetchPost", {
         method: "POST",
@@ -31,10 +45,10 @@ function Feed() {
         }),
       });
       const data = await res.json();
-      return data;
+      setPosts(data);
     }
-    const posts = FetchPosts();
-    console.log(posts);
+    FetchPosts();
+    FetchFriends();
   }, [user, router]);
 
   async function handleImageUpload(e) {
@@ -81,7 +95,6 @@ function Feed() {
               <div id="middle_wrapper_header">
                 <h1>Feed</h1>
               </div>
-
               <form id="post_action">
                 <div id="post_action_compose_new">
                   <textarea
@@ -105,11 +118,17 @@ function Feed() {
                   </button>
                 </div>
               </form>
-
+              {loading && <div className="loading-animation">Loading...</div>}{" "}
               <div id="content_wrapper">
                 <div id="content_test">
-                  <FeedPost></FeedPost>
-                  <FeedPost></FeedPost>
+                  {posts &&
+                    posts.map((currentPost) => (
+                      <FeedPost
+                        type={currentPost.type}
+                        image={currentPost.image}
+                        content={currentPost.content}
+                      />
+                    ))}
                 </div>
               </div>
             </div>
@@ -129,13 +148,19 @@ function Feed() {
               </div>
               <div id="friends_wrapper">
                 <h1>Friends</h1>
-                {/* <FeedFriend /> */}
+                {friends &&
+                  friends.map((friend) => (
+                    <FeedFriend
+                      id={friend.following.id}
+                      name={friend.following.username}
+                      imageURL={friend.following.image}
+                    />
+                  ))}
               </div>
             </div>
           </div>
         </div>
       ) : null}
-      {loading && <div className="loading-animation">Loading...</div>}{" "}
       {/* Display loading animation when loading is true */}
     </>
   );
