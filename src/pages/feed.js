@@ -107,11 +107,18 @@ function Feed() {
                   ></textarea>
                 </div>
                 <div id="post_action_add_buttons">
-                  <input
-                    id="add_photo"
-                    type="file"
-                    onChange={handleImageUpload}
-                  />
+                  <label
+                    htmlFor="add_photo"
+                    id="add_photo_label"
+                    className="file-input-label"
+                  >
+                    Choose File
+                    <input
+                      id="add_photo"
+                      type="file"
+                      onChange={handleImageUpload}
+                    />
+                  </label>
                   <button id="add_video">Add Video</button>
                   <button id="post" onClick={submitPost}>
                     Post
@@ -120,15 +127,19 @@ function Feed() {
               </form>
               {loading && <div className="loading-animation">Loading...</div>}{" "}
               <div id="content_wrapper">
-                <div id="content_test">
+                <div id="content_display">
                   {posts &&
-                    posts.map((currentPost) => (
-                      <FeedPost
-                        type={currentPost.type}
-                        image={currentPost.image}
-                        content={currentPost.content}
-                      />
-                    ))}
+                    posts.map((currentPost) => {
+                      const date = currentPost.createdAt.split("T")[0]; // Extract the date portion
+                      return (
+                        <FeedPost
+                          type={currentPost.type}
+                          image={currentPost.image}
+                          content={currentPost.content}
+                          date={date} // Pass the extracted date
+                        />
+                      );
+                    })}
                 </div>
               </div>
             </div>
