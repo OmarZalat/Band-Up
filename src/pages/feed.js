@@ -1,87 +1,93 @@
-import Link from "next/link";
-import FeedPost from "@/components/Feed/feedPost";
-import FeedFriend from "@/components/Feed/feedFriend";
-import { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { UserContext } from "@/context/userContext";
-import LeftPanelNavigation from "@/components/UI/leftPanelNavigation";
+import Link from 'next/link'
+import FeedPost from '@/components/Feed/feedPost'
+import FeedFriend from '@/components/Feed/feedFriend'
+import { useContext, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { UserContext } from '@/context/userContext'
+import LeftPanelNavigation from '@/components/UI/leftPanelNavigation'
 
 function Feed() {
-  const router = useRouter();
-  const { user, setUser } = useContext(UserContext);
-  const [loading, setLoading] = useState(false); // Loading state variable
-  const [friends, setFriends] = useState();
-  const [posts, setPosts] = useState();
+  const router = useRouter()
+  const { user, setUser } = useContext(UserContext)
+  const [loading, setLoading] = useState(false) // Loading state variable
+  const [friends, setFriends] = useState()
+  const [posts, setPosts] = useState()
 
   const [post, setPost] = useState({
-    content: "",
-    imageBase64: "",
-  });
+    content: '',
+    imageBase64: ''
+  })
+
   useEffect(() => {
-    if (!user) {
-      router.push({
-        pathname: "/signin",
-        query: { from: router.asPath },
-      });
+    async function verifySession() {
+      const token = await fetch('/api/verifySession')
+      if (!token) {
+        router.push({
+          pathname: '/signin',
+          query: { from: router.asPath }
+        })
+      }
     }
+
     async function FetchFriends() {
-      const res = await fetch("/api/fetchFriends", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/fetchFriends', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          followerId: user?.id,
-        }),
-      });
-      const data = await res.json();
-      setFriends(data);
+          followerId: user?.id
+        })
+      })
+      const data = await res.json()
+      setFriends(data)
     }
 
     async function FetchPosts() {
-      const res = await fetch("/api/fetchPost", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/fetchPost', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          page: 1,
-        }),
-      });
-      const data = await res.json();
-      setPosts(data);
+          page: 1
+        })
+      })
+      const data = await res.json()
+      setPosts(data)
     }
-    FetchPosts();
-    FetchFriends();
-  }, [user, router]);
+    FetchPosts()
+    FetchFriends()
+    verifySession()
+  }, [user, router])
 
   async function handleImageUpload(e) {
-    const reader = new FileReader();
-    const currentFile = e.target.files?.[0];
+    const reader = new FileReader()
+    const currentFile = e.target.files?.[0]
     if (currentFile) {
-      reader.readAsDataURL(currentFile);
+      reader.readAsDataURL(currentFile)
     }
     reader.onloadend = async () => {
-      console.log(reader.result);
-      setPost({ ...post, imageBase64: reader.result });
-    };
+      console.log(reader.result)
+      setPost({ ...post, imageBase64: reader.result })
+    }
   }
   async function submitPost(e) {
-    e.preventDefault();
-    setLoading(true); // Start loading animation
+    e.preventDefault()
+    setLoading(true) // Start loading animation
 
     try {
-      const result = await fetch("/api/createBandPost", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const result = await fetch('/api/createBandPost', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...post,
           bandDataId: user.bandDataId,
-          type: "INDIVIDUAL",
-        }),
-      });
+          type: 'INDIVIDUAL'
+        })
+      })
 
       // Handle the response from the server
     } catch (error) {
       // Handle the error
     } finally {
-      setLoading(false); // Stop loading animation
+      setLoading(false) // Stop loading animation
     }
   }
 
@@ -125,12 +131,12 @@ function Feed() {
                   </button>
                 </div>
               </form>
-              {loading && <div className="loading-animation">Loading...</div>}{" "}
+              {loading && <div className="loading-animation">Loading...</div>}{' '}
               <div id="content_wrapper">
                 <div id="content_display">
                   {posts &&
                     posts.map((currentPost) => {
-                      const date = currentPost.createdAt.split("T")[0]; // Extract the date portion
+                      const date = currentPost.createdAt.split('T')[0] // Extract the date portion
                       return (
                         <FeedPost
                           type={currentPost.type}
@@ -138,7 +144,7 @@ function Feed() {
                           content={currentPost.content}
                           date={date} // Pass the extracted date
                         />
-                      );
+                      )
                     })}
                 </div>
               </div>
@@ -174,7 +180,7 @@ function Feed() {
       ) : null}
       {/* Display loading animation when loading is true */}
     </>
-  );
+  )
 }
 
-export default Feed;
+export default Feed
