@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { AiFillLike, AiOutlineLike } from "react-icons/ai";
-import { FaRegComment } from "react-icons/fa";
-import { AiOutlineShareAlt } from "react-icons/ai";
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { AiFillLike, AiOutlineLike } from 'react-icons/ai'
+import { FaRegComment } from 'react-icons/fa'
+import { AiOutlineShareAlt } from 'react-icons/ai'
 
 function FeedPost({ type, image, date, content }) {
-  console.log(type, image, content, date);
-
   return (
     <>
       <div className="feed_post_card">
@@ -20,10 +18,10 @@ function FeedPost({ type, image, date, content }) {
           {image ? (
             <div
               style={{
-                position: "relative",
-                width: "100%",
+                position: 'relative',
+                width: '100%',
                 height: 0,
-                paddingBottom: "100%",
+                paddingBottom: '100%'
               }}
             >
               <Image src={image} layout="fill" objectFit="contain" />
@@ -46,7 +44,7 @@ function FeedPost({ type, image, date, content }) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default FeedPost;
+export default FeedPost
