@@ -100,6 +100,16 @@ model Tags {
   BandData BandData[]
 }
 
+model Position {
+  id   String @id @default(cuid())
+  name String
+}
+
+model Interests {
+  id   String @id @default(cuid())
+  name String
+}
+
 enum Role {
   MEMBER
   PUBLISHER
