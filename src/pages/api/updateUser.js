@@ -25,7 +25,9 @@ export default async function handler(req, res) {
       },
       data: {
         interests: {
-          connect: tagId,
+          connect: {
+            id: tagId,
+          },
         },
       },
     });

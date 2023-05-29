@@ -12,10 +12,10 @@ model BandData {
   createdAt   DateTime    @default(now())
   bio         String?
   name        String
+  interestsId String
   interest    Interests   @relation(fields: [interestsId], references: [id])
   posts       BandPosts[]
   bandMembers UserData[]
-  interestsId String
 }
 
 model BandPosts {
@@ -102,8 +102,8 @@ model Position {
 model Interests {
   id       String     @id @default(cuid())
   name     String
-  users    UserData[] @relation("InterestsToUserData")
   BandData BandData[]
+  users    UserData[] @relation("InterestsToUserData")
 }
 
 enum Role {
