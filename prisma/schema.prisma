@@ -62,6 +62,7 @@ model UserData {
   following         Friendship[]   @relation("FollowingRelation")
   Likes             Likes[]
   comments          PostComments[]
+  interests         Interests[]
   Session           Session?
   BandData          BandData?      @relation(fields: [bandDataId], references: [id])
 }
@@ -106,8 +107,9 @@ model Position {
 }
 
 model Interests {
-  id   String @id @default(cuid())
-  name String
+  id    String     @id @default(cuid())
+  name  String
+  users UserData[]
 }
 
 enum Role {

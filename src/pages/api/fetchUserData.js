@@ -26,7 +26,8 @@ export default async function handler(req, res) {
               username: true,
               bio: true,
               bandDataId: true,
-              role: true
+              role: true,
+              interests: true
             }
           }
         },
