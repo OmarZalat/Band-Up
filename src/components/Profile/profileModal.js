@@ -1,90 +1,84 @@
-import { useContext } from "react";
-import { UserContext } from "@/context/userContext";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-import countries from "./countries";
-import Select from "react-select";
+import { useContext } from 'react'
+import { UserContext } from '@/context/userContext'
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
+import countries from './countries'
+import Select from 'react-select'
 const defaultBg =
-  "https://ik.imagekit.io/0tfb5ok46/Default-Profile-Picture-Transparent-Image.png?updatedAt=1684094895997";
+  'https://ik.imagekit.io/0tfb5ok46/Default-Profile-Picture-Transparent-Image.png?updatedAt=1684094895997'
 
 function ProfileModal(props) {
-  const { user, setUser } = useContext(UserContext);
-  const router = useRouter();
-  const [tags, setTags] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { user, setUser } = useContext(UserContext)
+  const router = useRouter()
+  const [tags, setTags] = useState([])
+  const [selectedTags, setSelectedTags] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     // Fetch tags from the API endpoint
-    fetch("/api/getTags")
+    fetch('/api/getTags')
       .then((response) => response.json())
       .then((data) => {
-        setTags(data);
-        setIsLoading(false);
+        setTags(data)
+        setIsLoading(false)
       })
       .catch((error) => {
-        console.error("Error fetching tags:", error);
-        setIsLoading(false);
-      });
-  }, []);
+        console.error('Error fetching tags:', error)
+        setIsLoading(false)
+      })
+  }, [])
 
   const handleTagChange = (selectedOptions) => {
-    console.log(selectedOptions[0]);
-    if (!updatedUser?.tagsId || updatedUser?.tagsId?.length <= 3) {
-      setSelectedTags(selectedOptions);
-      if (Array.isArray(updatedUser.tagsId)) {
-        const temp = [...updatedUser.tagsId];
-        const index = temp.indexOf(selectedOptions[0].value);
-        console.log(index);
-        if (index === -1) {
-          temp.push(selectedOptions[0].value);
-          console.log(temp);
-          setUpdatedUser({ ...updatedUser, tagsId: temp });
-        }
-      } else {
-        setUpdatedUser({ ...updatedUser, tagsId: [selectedOptions[0].value] });
-      }
+    setSelectedTags(selectedOptions)
+    if (selectedOptions.length > 0) {
+      let temp = []
+      selectedOptions.map((option) => {
+        temp.push(option.value)
+      })
+      setUpdatedUser({ ...updatedUser, tagsId: temp })
+    } else {
+      setUpdatedUser({ ...updatedUser, tagsId: [] })
     }
-  };
+  }
 
   // Create a state variable to hold the updated user data
-  const [updatedUser, setUpdatedUser] = useState(user);
-  console.log(updatedUser);
+  const [updatedUser, setUpdatedUser] = useState(user)
+  console.log(updatedUser)
 
   // Create a copy of the original user data
   // const defaultUser = { ...user };
 
   // Update the updatedUser state when the user context changes
   useEffect(() => {
-    setUpdatedUser(user);
-  }, [user]);
+    setUpdatedUser(user)
+  }, [user])
 
   async function handleDeleteProfile() {
-    const res = await fetch("/api/deleteProfile", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: user.id }),
-    });
-    const data = await res.json();
+    const res = await fetch('/api/deleteProfile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: user.id })
+    })
+    const data = await res.json()
     if (data) {
-      setUser(null);
-      router.push("/");
+      setUser(null)
+      router.push('/')
     }
   }
 
   const handleCountryChange = (event) => {
-    const country = event.target.value;
-    setUpdatedUser({ ...user, country });
-  };
+    const country = event.target.value
+    setUpdatedUser({ ...user, country })
+  }
 
   function cancelHandler() {
-    props.onCancel();
-    console.log(user);
+    props.onCancel()
+    console.log(user)
   }
 
   async function saveChangesHandler() {
-    if (updatedUser.FName.trim() === "" || updatedUser.LName.trim() === "") {
-      alert("Please enter your firstname and lastname");
-      return;
+    if (updatedUser.FName.trim() === '' || updatedUser.LName.trim() === '') {
+      alert('Please enter your firstname and lastname')
+      return
     }
 
     const modalFormData = {
@@ -94,20 +88,18 @@ function ProfileModal(props) {
       LName: updatedUser.LName,
       country: updatedUser.country,
       bio: updatedUser.bio,
-      tagsId: updatedUser.tagsId,
-    };
+      tagsId: updatedUser.tagsId
+    }
 
     //backend code should be implemented heere
-    console.log(tags);
-    const res = await fetch("/api/updateUser", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ modalFormData }),
-    });
+    const res = await fetch('/api/updateUser', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ modalFormData })
+    })
 
     // Update the user data in the UserContext
-    setUser(updatedUser);
-    console.log(updatedUser);
+    setUser(updatedUser)
 
     // console.log(`user: ${user}`);
     // console.log(`modalFormData ${modalFormData}`);
@@ -115,7 +107,7 @@ function ProfileModal(props) {
     // console.log(user);
     // console.log(modalFormData);
     // console.log(updatedUser);
-    props.onCancel();
+    props.onCancel()
   }
 
   return (
@@ -131,7 +123,7 @@ function ProfileModal(props) {
               style={{
                 backgroundImage: user?.profilePicture
                   ? `url(${user?.profilePicture})`
-                  : `url("${defaultBg}")`,
+                  : `url("${defaultBg}")`
               }}
             >
               <button className="modal_profile_picture_edit_button">
@@ -149,7 +141,7 @@ function ProfileModal(props) {
                 onChange={(e) =>
                   setUpdatedUser({
                     ...updatedUser,
-                    username: e.currentTarget.value,
+                    username: e.currentTarget.value
                   })
                 }
               ></input>
@@ -164,7 +156,7 @@ function ProfileModal(props) {
                   onChange={(event) =>
                     setUpdatedUser({
                       ...user,
-                      FName: event.currentTarget.value,
+                      FName: event.currentTarget.value
                     })
                   }
                 ></input>
@@ -178,7 +170,7 @@ function ProfileModal(props) {
                   onChange={(event) =>
                     setUpdatedUser({
                       ...user,
-                      LName: event.currentTarget.value,
+                      LName: event.currentTarget.value
                     })
                   }
                 ></input>
@@ -207,7 +199,7 @@ function ProfileModal(props) {
                   <Select
                     options={tags.map((tag) => ({
                       value: tag.id,
-                      label: tag.name,
+                      label: tag.name
                     }))}
                     isMulti
                     value={selectedTags}
@@ -247,7 +239,7 @@ function ProfileModal(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default ProfileModal;
+export default ProfileModal
