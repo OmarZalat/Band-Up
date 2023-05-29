@@ -12,10 +12,10 @@ model BandData {
   createdAt   DateTime    @default(now())
   bio         String?
   name        String
-  tagsId      String
-  tag         Tags        @relation(fields: [tagsId], references: [id])
+  interest    Interests   @relation(fields: [interestsId], references: [id])
   posts       BandPosts[]
   bandMembers UserData[]
+  interestsId String
 }
 
 model BandPosts {
@@ -53,7 +53,6 @@ model UserData {
   country           String
   DOB               String
   gender            String
-  tags              String[]
   bio               String?
   bandDataId        String?
   role              Role           @default(MEMBER)
@@ -95,21 +94,16 @@ model Likes {
   user        UserData  @relation(fields: [userDataId], references: [id])
 }
 
-model Tags {
-  id       String     @id @default(cuid())
-  name     String     @unique
-  BandData BandData[]
-}
-
 model Position {
   id   String @id @default(cuid())
   name String
 }
 
 model Interests {
-  id    String     @id @default(cuid())
-  name  String
-  users UserData[]
+  id       String     @id @default(cuid())
+  name     String
+  users    UserData[]
+  BandData BandData[]
 }
 
 enum Role {
