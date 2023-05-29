@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
-import { AiFillLike, AiOutlineLike } from 'react-icons/ai'
-import { FaRegComment } from 'react-icons/fa'
-import { AiOutlineShareAlt } from 'react-icons/ai'
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { AiFillLike, AiOutlineLike } from "react-icons/ai";
+import { FaRegComment } from "react-icons/fa";
+import { AiOutlineShareAlt } from "react-icons/ai";
 
 function FeedPost({ type, image, date, content }) {
   return (
@@ -14,14 +14,21 @@ function FeedPost({ type, image, date, content }) {
           <div className="feed_post_card_header_date">{date}</div>
         </div>
         <hr id="feed_post_line_break" />
+        {image && (
+          <div className="feed_post_card_caption">
+            <p>{content}</p>
+          </div>
+        )}
+        <hr id="feed_post_line_break" />
+
         <div className="feed_post_card_body">
           {image ? (
             <div
               style={{
-                position: 'relative',
-                width: '100%',
+                position: "relative",
+                width: "100%",
                 height: 0,
-                paddingBottom: '100%'
+                paddingBottom: "100%",
               }}
             >
               <Image src={image} layout="fill" objectFit="contain" />
@@ -32,19 +39,20 @@ function FeedPost({ type, image, date, content }) {
         </div>
         <div className="feed_post_card_footer">
           <div className="feed_post_card_footer_buttons">
-            <AiFillLike size={30} />
-            <FaRegComment size={30} />
-            <AiOutlineShareAlt size={30} />
-          </div>
-          {image && (
-            <div className="feed_post_card_footer_caption">
-              <p>{content}</p>
+            <div className="feed_post_card_footer_buttons_wrapper">
+              Like <AiFillLike size={20} />
             </div>
-          )}
+            <div className="feed_post_card_footer_buttons_wrapper">
+              Comment <FaRegComment size={20} />
+            </div>
+            <div className="feed_post_card_footer_buttons_wrapper">
+              Share <AiOutlineShareAlt size={20} />
+            </div>
+          </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default FeedPost
+export default FeedPost;
