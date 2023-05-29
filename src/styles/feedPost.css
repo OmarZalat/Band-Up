@@ -40,6 +40,10 @@
   margin-right: 20px;
 }
 
+.feed_post_card_caption {
+  padding: 20px;
+}
+
 #feed_post_line_break {
   border-top: 1px solid #f0f0f0;
 }
@@ -64,14 +68,26 @@
 
 .feed_post_card_footer_buttons {
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   gap: 30px;
   color: white;
   margin-left: 20px;
   padding: 10px;
 }
 
-.feed_post_card_footer_buttons:hover {
+.feed_post_card_footer_buttons_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: 0.5s;
+}
+
+.feed_post_card_footer_buttons_wrapper:hover {
   cursor: pointer;
+  background-color: orange;
+  opacity: 0.5;
 }
 
 .feed_post_card_footer_caption {
