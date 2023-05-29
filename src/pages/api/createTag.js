@@ -1,17 +1,17 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 export default async function handler(req, res) {
   try {
-    const response = await prisma.tags.create({
+    const response = await prisma.interests.create({
       data: {
-        name: "jazz",
-      },
-    });
-    console.log("CREATE TAG RESPONSE: " + response);
-    res.send(response);
+        name: 'jazz'
+      }
+    })
+    console.log('CREATE TAG RESPONSE: ' + response)
+    res.send(response)
   } catch (e) {
-    console.log("ERROR: " + e);
+    console.log('ERROR: ' + e)
   }
 }
