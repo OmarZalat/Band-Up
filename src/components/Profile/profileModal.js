@@ -13,7 +13,6 @@ function ProfileModal(props) {
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     // Fetch tags from the API endpoint
     fetch("/api/getTags")
@@ -29,8 +28,21 @@ function ProfileModal(props) {
   }, []);
 
   const handleTagChange = (selectedOptions) => {
-    if (selectedOptions.length <= 3) {
+    console.log(selectedOptions[0]);
+    if (!updatedUser?.tagsId || updatedUser?.tagsId?.length <= 3) {
       setSelectedTags(selectedOptions);
+      if (Array.isArray(updatedUser.tagsId)) {
+        const temp = [...updatedUser.tagsId];
+        const index = temp.indexOf(selectedOptions[0].value);
+        console.log(index);
+        if (index === -1) {
+          temp.push(selectedOptions[0].value);
+          console.log(temp);
+          setUpdatedUser({ ...updatedUser, tagsId: temp });
+        }
+      } else {
+        setUpdatedUser({ ...updatedUser, tagsId: [selectedOptions[0].value] });
+      }
     }
   };
 
@@ -82,7 +94,7 @@ function ProfileModal(props) {
       LName: updatedUser.LName,
       country: updatedUser.country,
       bio: updatedUser.bio,
-      tags: updatedUser.tags,
+      tagsId: updatedUser.tagsId,
     };
 
     //backend code should be implemented heere

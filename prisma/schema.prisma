@@ -12,10 +12,10 @@ model BandData {
   createdAt   DateTime    @default(now())
   bio         String?
   name        String
-  interest    Interests   @relation(fields: [interestsId], references: [id])
+  tagsId      String
+  Tags        Tags        @relation(fields: [tagsId], references: [id])
   posts       BandPosts[]
   bandMembers UserData[]
-  interestsId String
 }
 
 model BandPosts {
@@ -53,6 +53,7 @@ model UserData {
   country           String
   DOB               String
   gender            String
+  tags              String[]
   bio               String?
   bandDataId        String?
   role              Role           @default(MEMBER)
@@ -61,9 +62,9 @@ model UserData {
   following         Friendship[]   @relation("FollowingRelation")
   Likes             Likes[]
   comments          PostComments[]
-  interests         Interests[]
   Session           Session?
   BandData          BandData?      @relation(fields: [bandDataId], references: [id])
+  interests         Interests[]    @relation("InterestsToUserData")
 }
 
 model Friendship {
@@ -100,9 +101,14 @@ model Position {
 }
 
 model Interests {
-  id       String     @id @default(cuid())
-  name     String
-  users    UserData[]
+  id    String     @id @default(cuid())
+  name  String
+  users UserData[] @relation("InterestsToUserData")
+}
+
+model Tags {
+  id       String     @id
+  name     String     @unique
   BandData BandData[]
 }
 
