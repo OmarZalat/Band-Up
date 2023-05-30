@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "@/context/userContext";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+
 import countries from "./countries";
 import Select from "react-select";
 const defaultBg =
@@ -13,6 +14,23 @@ function ProfileModal(props) {
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [imageUploaded, setImageUploaded] = useState();
+  const [image, setImage] = useState(null); // State variable to hold the image data
+
+  useEffect(() => {
+    fetch("/api/fetchProfilePicture")
+      .then((response) => response.json())
+      .then((data) => {
+        setImage(data[2]?.image);
+        console.log("use effect");
+        console.log(data);
+        console.log(image);
+      })
+      .catch((error) => {
+        console.error("Error fetching image:", error);
+      });
+  }, []);
+
   useEffect(() => {
     // Fetch tags from the API endpoint
     fetch("/api/getTags")
@@ -77,10 +95,26 @@ function ProfileModal(props) {
     console.log(user);
   }
 
-  async function saveChangesHandler() {
+  async function saveChangesHandler(e) {
+    e.preventDefault();
     if (updatedUser.FName.trim() === "" || updatedUser.LName.trim() === "") {
       alert("Please enter your firstname and lastname");
       return;
+    }
+
+    try {
+      const result = await fetch("/api/addProfilePicture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: user.id,
+          imageBase64: imageUploaded,
+        }),
+      });
+
+      // Handle the response from the server
+    } catch (error) {
+      // Handle the error
     }
 
     const modalFormData = {
@@ -103,13 +137,19 @@ function ProfileModal(props) {
     // Update the user data in the UserContext
     setUser(updatedUser);
 
-    // console.log(`user: ${user}`);
-    // console.log(`modalFormData ${modalFormData}`);
-    // console.log(`updatedUser: ${updatedUser}`);
-    // console.log(user);
-    // console.log(modalFormData);
-    // console.log(updatedUser);
     props.onCancel();
+  }
+
+  async function handleImageUpload(e) {
+    const reader = new FileReader();
+    const currentFile = e.target.files?.[0];
+    if (currentFile) {
+      reader.readAsDataURL(currentFile);
+    }
+    reader.onloadend = async () => {
+      console.log(reader.result);
+      setImageUploaded(reader.result);
+    };
   }
 
   return (
@@ -123,14 +163,24 @@ function ProfileModal(props) {
             <div
               className="modal_profile_picture_edit"
               style={{
-                backgroundImage: user?.profilePicture
-                  ? `url(${user?.profilePicture})`
+                backgroundImage: image
+                  ? `url(${image})`
                   : `url("${defaultBg}")`,
               }}
             >
-              <button className="modal_profile_picture_edit_button">
-                Update Image
-              </button>
+              <label
+                htmlFor="add_profile_photo"
+                id="add_profile_photo_label"
+                className="profile_picture_input_label"
+              >
+                Upload Image
+              </label>
+              <input
+                id="add_profile_photo"
+                type="file"
+                onChange={handleImageUpload}
+                style={{ display: "none" }}
+              />
             </div>
           </div>
           <div className="modal_main_right">

@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   background-color: orange;
-  width: 15%;
+  width: 20%;
   text-transform: uppercase;
   font-weight: bold;
   color: white;
@@ -32,10 +32,11 @@
 
 #interests_content_info {
   display: flex;
+  width: 100%;
   flex-direction: row;
   margin-left: 5px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   gap: 10px;
   overflow-x: scroll;
   scrollbar-width: none;
