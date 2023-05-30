@@ -67,6 +67,12 @@ function SignIn() {
     }
   }
 
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      submitHandler(event);
+    }
+  }
+
   return (
     <div>
       <div id="title-signup-page">
@@ -87,6 +93,7 @@ function SignIn() {
                   id="signin-email-input"
                   required
                   ref={emailInput}
+                  onKeyPress={handleKeyPress}
                 />
               </div>
               <div className={classes.division}>
@@ -96,6 +103,7 @@ function SignIn() {
                   id="signin-password-input"
                   required
                   ref={passwordInput}
+                  onKeyPress={handleKeyPress}
                 />
               </div>
               <div className={classes.division}>

@@ -28,6 +28,7 @@ export default async function handler(req, res) {
               bandDataId: true,
               role: true,
               interests: true,
+              image: true,
             },
           },
         },
@@ -59,6 +60,7 @@ export default async function handler(req, res) {
           bio: true,
           bandDataId: true,
           role: true,
+          image: true,
         },
         where: {
           email,

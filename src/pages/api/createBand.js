@@ -6,13 +6,14 @@ export default async function handler(req, res) {
   const { bio, name, userID, role, tagID, verificationStatus } =
     req.body.formData;
   console.log(req.body);
+  console.log(verificationStatus);
   if (verificationStatus) {
     try {
       const response = await prisma.bandData.create({
         data: {
           bio,
           name,
-          tag: {
+          interest: {
             connect: {
               id: tagID,
             },
