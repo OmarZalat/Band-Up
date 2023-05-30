@@ -10,21 +10,6 @@ const defaultBg =
 function NavigationBar() {
   const router = useRouter();
   const { user, setUser } = useContext(UserContext);
-  const [image, setImage] = useState(null); // State variable to hold the image data
-
-  useEffect(() => {
-    fetch("/api/fetchProfilePicture")
-      .then((response) => response.json())
-      .then((data) => {
-        setImage(data[2]?.image);
-        console.log("use effect");
-        console.log(data);
-        console.log(image);
-      })
-      .catch((error) => {
-        console.error("Error fetching image:", error);
-      });
-  }, []);
 
   const handleSignInClick = () => {
     router.push("/signin");
@@ -75,8 +60,8 @@ function NavigationBar() {
               <div
                 id="nav_bar_profile_container_image"
                 style={{
-                  backgroundImage: image
-                    ? `url(${image})`
+                  backgroundImage: user.image
+                    ? `url(${user.image})`
                     : `url("${defaultBg}")`,
                 }}
               ></div>
@@ -98,7 +83,7 @@ function NavigationBar() {
                   </div>
                   <div className="dropdown-content">
                     <Link
-                      href="#"
+                      href="/"
                       onClick={async () => {
                         await fetch("/api/signOut");
                         setUser(undefined);

@@ -1,26 +1,13 @@
 import { useEffect, useState } from "react";
-
+import { useContext } from "react";
+import { UserContext } from "@/context/userContext";
 const defaultBg =
   "https://ik.imagekit.io/0tfb5ok46/Default-Profile-Picture-Transparent-Image.png?updatedAt=1684094895997";
 
 function ProfileCard({ FName, bio, profilePicture }) {
   // Check if the user is viewing their own profile
   const isOwnerProfile = true; // Replace this with your logic to determine if it's the owner's profile
-  const [image, setImage] = useState(null); // State variable to hold the image data
-
-  useEffect(() => {
-    fetch("/api/fetchProfilePicture")
-      .then((response) => response.json())
-      .then((data) => {
-        setImage(data[2]?.image);
-        console.log("use effect");
-        console.log(data);
-        console.log(image);
-      })
-      .catch((error) => {
-        console.error("Error fetching image:", error);
-      });
-  }, []);
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <>
@@ -28,7 +15,9 @@ function ProfileCard({ FName, bio, profilePicture }) {
         <div
           id="user_card_profile_picture"
           style={{
-            backgroundImage: image ? `url(${image})` : `url("${defaultBg}")`,
+            backgroundImage: user.image
+              ? `url(${user.image})`
+              : `url("${defaultBg}")`,
           }}
         >
           {isOwnerProfile ? null : ( // Display nothing when it's the owner's profile

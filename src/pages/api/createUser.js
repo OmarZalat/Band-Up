@@ -55,7 +55,7 @@ export default async function handler(req, res) {
       from: "bandupsup@gmail.com", // Replace with your own email address
       to: email, // User's email address
       subject: "Email Verification",
-      html: `Please click the following link to verify your email: <a href="http://localhost:3000/verify/${response.id}">Verify Email</a>`,
+      html: `Please click the following link to verify your email: <a href="http://localhost:3000/verificationPage/${response.id}">Verify Email</a>`,
     };
 
     // Send the email

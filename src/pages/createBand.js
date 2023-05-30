@@ -13,7 +13,7 @@ function CreateBand() {
     bio: "",
     name: "",
     userID: user?.id,
-    role: user?.role,
+    role: "LEADER",
     tagID: "",
     verificationStatus: user?.emailVerification,
   });

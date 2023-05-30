@@ -15,22 +15,7 @@ function ProfileModal(props) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [imageUploaded, setImageUploaded] = useState();
-  const [image, setImage] = useState(null); // State variable to hold the image data
-
-  useEffect(() => {
-    fetch("/api/fetchProfilePicture")
-      .then((response) => response.json())
-      .then((data) => {
-        setImage(data[2]?.image);
-        console.log("use effect");
-        console.log(data);
-        console.log(image);
-      })
-      .catch((error) => {
-        console.error("Error fetching image:", error);
-      });
-  }, []);
-
+  console.log(user);
   useEffect(() => {
     // Fetch tags from the API endpoint
     fetch("/api/getTags")
@@ -163,8 +148,8 @@ function ProfileModal(props) {
             <div
               className="modal_profile_picture_edit"
               style={{
-                backgroundImage: image
-                  ? `url(${image})`
+                backgroundImage: user.image
+                  ? `url(${user.image})`
                   : `url("${defaultBg}")`,
               }}
             >

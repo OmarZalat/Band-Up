@@ -29,7 +29,7 @@ function ProfileInterests() {
         <div id="interests">
           <div id="interests_content_label">interests</div>
           <div id="interests_content_info" ref={interestsContentInfoRef}>
-            {user.interests.length > 0 ? (
+            {user.interests?.length > 0 ? (
               user.interests.map((interest) => (
                 <div key={interest.id} className="interest-item">
                   {interest.name}
