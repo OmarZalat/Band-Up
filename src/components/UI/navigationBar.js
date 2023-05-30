@@ -1,14 +1,31 @@
 import { UserContext } from "@/context/userContext";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
 const defaultBg =
   "https://ik.imagekit.io/0tfb5ok46/Default-Profile-Picture-Transparent-Image.png?updatedAt=1684094895997";
 
 function NavigationBar() {
   const router = useRouter();
   const { user, setUser } = useContext(UserContext);
+  const [image, setImage] = useState(null); // State variable to hold the image data
+
+  useEffect(() => {
+    fetch("/api/fetchProfilePicture")
+      .then((response) => response.json())
+      .then((data) => {
+        setImage(data[2]?.image);
+        console.log("use effect");
+        console.log(data);
+        console.log(image);
+      })
+      .catch((error) => {
+        console.error("Error fetching image:", error);
+      });
+  }, []);
+
   const handleSignInClick = () => {
     router.push("/signin");
   };
@@ -58,8 +75,8 @@ function NavigationBar() {
               <div
                 id="nav_bar_profile_container_image"
                 style={{
-                  backgroundImage: user?.profilePicture
-                    ? `url(${user?.profilePicture})`
+                  backgroundImage: image
+                    ? `url(${image})`
                     : `url("${defaultBg}")`,
                 }}
               ></div>
