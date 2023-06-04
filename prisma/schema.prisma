@@ -56,6 +56,7 @@ model UserData {
   bio               String?
   bandDataId        String?
   role              Role           @default(MEMBER)
+  position          Position?      @relation(fields: [positionId], references: [id])
   userDataId        String?
   follower          Friendship[]   @relation("FollowerRelation")
   following         Friendship[]   @relation("FollowingRelation")
@@ -64,6 +65,7 @@ model UserData {
   Session           Session?
   BandData          BandData?      @relation(fields: [bandDataId], references: [id])
   interests         Interests[]    @relation("InterestsToUserData")
+  positionId        String?
 }
 
 model Friendship {
@@ -95,8 +97,9 @@ model Likes {
 }
 
 model Position {
-  id   String @id @default(cuid())
-  name String
+  id       String     @id @default(cuid())
+  name     String
+  UserData UserData[]
 }
 
 model Interests {
