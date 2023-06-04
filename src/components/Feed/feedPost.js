@@ -9,8 +9,10 @@ function FeedPost({ type, image, date, content }) {
     <>
       <div className="feed_post_card">
         <div className="feed_post_card_header">
-          <div className="feed_post_card_header_profile_image"></div>
-          <div className="feed_post_card_header_profile_name">name</div>
+          <div className="feed_post_card_header_profile_image">
+            <div id="profile_image_header"></div>
+          </div>
+          <div className="feed_post_card_header_profile_name">Omar Zalat</div>
           <div className="feed_post_card_header_date">{date}</div>
         </div>
         <hr id="feed_post_line_break" />
