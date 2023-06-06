@@ -17,17 +17,26 @@ function ProfileModal(props) {
   const [imageUploaded, setImageUploaded] = useState();
   console.log(user);
   useEffect(() => {
-    // Fetch tags from the API endpoint
-    fetch("/api/getTags")
-      .then((response) => response.json())
-      .then((data) => {
-        setTags(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching tags:", error);
-        setIsLoading(false);
-      });
+    // Fetch user's interests from the backend
+    if (user.interests) {
+      setSelectedTags(
+        user.interests.map((interest) => ({
+          value: interest.id,
+          label: interest.name,
+        }))
+      );
+    } else {
+      fetch("/api/getTags")
+        .then((response) => response.json())
+        .then((data) => {
+          setTags(data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching tags:", error);
+          setIsLoading(false);
+        });
+    }
   }, []);
 
   const handleTagChange = (selectedOptions) => {
@@ -230,19 +239,20 @@ function ProfileModal(props) {
               </div>
               <div className="modal_cell_3_right">
                 <label>Interests (up to 3)</label>
-                {isLoading ? (
-                  <p>Loading tags...</p>
-                ) : (
-                  <Select
-                    options={tags.map((tag) => ({
-                      value: tag.id,
-                      label: tag.name,
-                    }))}
-                    isMulti
-                    value={selectedTags}
-                    onChange={handleTagChange}
-                  />
-                )}
+
+                <Select
+                  options={
+                    isLoading
+                      ? []
+                      : tags.map((tag) => ({
+                          value: tag.id,
+                          label: tag.name,
+                        }))
+                  }
+                  isMulti
+                  value={selectedTags}
+                  onChange={handleTagChange}
+                />
               </div>
             </div>
             <div className="modal_cell_4">

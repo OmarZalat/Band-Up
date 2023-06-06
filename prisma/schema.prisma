@@ -56,16 +56,16 @@ model UserData {
   bio               String?
   bandDataId        String?
   role              Role           @default(MEMBER)
-  position          Position?      @relation(fields: [positionId], references: [id])
   userDataId        String?
+  positionId        String?
   follower          Friendship[]   @relation("FollowerRelation")
   following         Friendship[]   @relation("FollowingRelation")
   Likes             Likes[]
   comments          PostComments[]
   Session           Session?
   BandData          BandData?      @relation(fields: [bandDataId], references: [id])
+  position          Position?      @relation(fields: [positionId], references: [id])
   interests         Interests[]    @relation("InterestsToUserData")
-  positionId        String?
 }
 
 model Friendship {
