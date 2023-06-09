@@ -32,6 +32,7 @@ export default async function handler(req, res) {
               position: true,
               BandData: true,
               follower: true,
+              BandPosts: true,
             },
           },
         },

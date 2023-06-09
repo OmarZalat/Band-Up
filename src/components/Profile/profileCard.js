@@ -42,7 +42,7 @@ function ProfileCard({ FName, bio, profilePicture }) {
       </div>
       <div id="user_card_posts">
         <div id="user_card_posts_label">posts</div>
-        <div id="user_card_posts_number">0</div>
+        <div id="user_card_posts_number">{user.BandPosts?.length || 0}</div>
       </div>
     </div>
   );
