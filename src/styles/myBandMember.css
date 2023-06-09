@@ -1,6 +1,6 @@
-.friend {
-  width: 90%;
-  min-height: 70px;
+.member {
+  width: 70%;
+  min-height: 50px;
   display: flex;
   align-items: center;
   border: 3px solid orange;
@@ -9,13 +9,13 @@
   transition: 0.5s;
 }
 
-.friend:hover {
+.member:hover {
   cursor: pointer;
   background-color: orange;
   color: white;
 }
 
-.friend_description {
+.member_description {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -23,24 +23,24 @@
   height: 70%;
 }
 
-.friend_description_image {
-  width: 45px;
-  height: 45px;
+.member_description_image {
+  width: 35px;
+  height: 35px;
   background-size: cover;
   position: relative;
 }
 
-.friend_description_image img {
+.member_description_image img {
   border-radius: 50%;
 }
 
-.friend_description_name {
+.member_description_name {
   display: flex;
   align-items: center;
   width: 75%;
   height: 100%;
 }
 
-.friend_description_name p {
+.member_description_name p {
   font-size: 20px;
 }

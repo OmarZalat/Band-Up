@@ -55,3 +55,33 @@
   height: 100%;
   background-color: #f2f2f2;
 }
+
+#myband_unassigned_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+
+#myband_unassigned_buttons_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-top: 20px;
+}
+.myband_unassigned_button {
+  width: 150px;
+  height: 50px;
+  background-color: orange;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+.myband_unassigned_button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

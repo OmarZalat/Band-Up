@@ -35,6 +35,7 @@ import "@/styles/myBandFeaturedTab.css";
 import "@/styles/termsAndConditions.css";
 import "@/styles/privacyPolicy.css";
 import "@/styles/termsAndConditionsCheckBox.css";
+import "@/styles/myBandMember.css";
 import { UserContext } from "@/context/userContext";
 import { useEffect, useState } from "react";
 
