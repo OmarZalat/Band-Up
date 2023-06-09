@@ -1,11 +1,11 @@
 import MyBandPostingUI from "../UI/myBandPostingUI";
 
-function MyBandFeaturedTab() {
+function MyBandFeaturedTab({ bandData }) {
   return (
     <>
       <div id="band_featured_wrapper">
         <div id="band_featured_card">
-          <MyBandPostingUI />
+          <MyBandPostingUI bandData={bandData} />
         </div>
       </div>
     </>
