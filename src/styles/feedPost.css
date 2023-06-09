@@ -15,19 +15,22 @@
 }
 
 .feed_post_card_header_profile_image {
-  /* background-color: aqua; */
-  /* background-image: url(/public/bbking.jpg); */
+  background-color: aqua;
+  border-radius: 50%;
   width: 60px;
   height: 60px;
   margin-left: 20px;
 }
 #profile_image_header {
-  background-image: url("../../public/spaceMonkey.jpg");
-  border-radius: 50%;
   width: 100%;
   height: 100%;
   background-size: contain;
   background-repeat: no-repeat;
+  position: relative;
+}
+
+#profile_image_header img {
+  border-radius: 50%;
 }
 
 .feed_post_card_header_profile_name {

@@ -12,7 +12,7 @@ function Feed() {
   const [loading, setLoading] = useState(false); // Loading state variable
   const [friends, setFriends] = useState();
   const [posts, setPosts] = useState();
-
+  const [page, setPage] = useState(1);
   const [post, setPost] = useState({
     content: "",
     imageBase64: "",
@@ -47,7 +47,7 @@ function Feed() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          page: 1,
+          page,
         }),
       });
       const data = await res.json();
@@ -58,7 +58,7 @@ function Feed() {
       FetchPosts();
       FetchFriends();
     }
-  }, [user, router]);
+  }, [user, page, router, loading]);
 
   async function handleImageUpload(e) {
     const reader = new FileReader();
@@ -83,6 +83,7 @@ function Feed() {
           ...post,
           bandDataId: user.bandDataId,
           type: "INDIVIDUAL",
+          userID: user.id,
         }),
       });
 
@@ -94,6 +95,7 @@ function Feed() {
     }
   }
 
+  console.log(posts);
   return (
     <>
       {user ? (
@@ -140,17 +142,27 @@ function Feed() {
                   {posts &&
                     posts.map((currentPost) => {
                       const date = currentPost.createdAt.split("T")[0]; // Extract the date portion
+
                       return (
                         <FeedPost
                           type={currentPost.type}
                           image={currentPost.image}
                           content={currentPost.content}
                           date={date} // Pass the extracted date
+                          userdata={currentPost.UserData}
                         />
                       );
                     })}
                 </div>
               </div>
+              <button
+                id="load_more_posts"
+                onClick={() => {
+                  setPage((prev) => prev + 1);
+                }}
+              >
+                Load More
+              </button>
             </div>
           </div>
           <div id="right">
