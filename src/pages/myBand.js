@@ -55,7 +55,7 @@ function MyBand() {
   function renderTab() {
     switch (activeTab) {
       case "featured":
-        return <MyBandFeaturedTab />;
+        return <MyBandFeaturedTab bandData={bandData} />;
       case "settings":
         if (user.role === "LEADER") {
           return (
