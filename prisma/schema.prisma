@@ -13,6 +13,8 @@ model BandData {
   bio         String?
   name        String
   interestsId String
+  profile     String?
+  banner      String?
   interest    Interests   @relation(fields: [interestsId], references: [id])
   posts       BandPosts[]
   bandMembers UserData[]
