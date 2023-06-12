@@ -1,6 +1,6 @@
 import Footer from "../../src/components/UI/footer";
 import { useRouter } from "next/router";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useState } from "react";
 import classes from "../../src/styles/signin.module.css";
 import { UserContext } from "@/context/userContext";
@@ -14,6 +14,21 @@ function SignIn() {
     const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return regex.test(email);
   }
+
+  useEffect(() => {
+    (async () => {
+      const token = await fetch("/api/verifySession", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (token) {
+        await fetch("/api/signOut", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+    })();
+  }, []);
 
   function createNewAccountHandler() {
     window.location.href = "/signup";
