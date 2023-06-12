@@ -48,6 +48,7 @@ model UserData {
   LName             String
   username          String?
   image             String?
+  banner            String?
   email             String         @unique
   emailVerification Boolean
   newsletterMember  Boolean
