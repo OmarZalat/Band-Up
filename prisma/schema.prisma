@@ -25,11 +25,11 @@ model BandPosts {
   createdAt    DateTime       @default(now())
   bandDataId   String?
   type         Type
+  userDataId   String?
   BandData     BandData?      @relation(fields: [bandDataId], references: [id])
+  UserData     UserData?      @relation(fields: [userDataId], references: [id])
   Likes        Likes[]
   PostComments PostComments[]
-  userDataId   String? // New field for user data
-  UserData     UserData?      @relation(fields: [userDataId], references: [id]) // Relation to UserData
 }
 
 model PostComments {
@@ -60,6 +60,7 @@ model UserData {
   role              Role           @default(MEMBER)
   userDataId        String?
   positionId        String?
+  BandPosts         BandPosts[]
   follower          Friendship[]   @relation("FollowerRelation")
   following         Friendship[]   @relation("FollowingRelation")
   Likes             Likes[]
@@ -68,8 +69,6 @@ model UserData {
   BandData          BandData?      @relation(fields: [bandDataId], references: [id])
   position          Position?      @relation(fields: [positionId], references: [id])
   interests         Interests[]    @relation("InterestsToUserData")
-
-  BandPosts BandPosts[]
 }
 
 model Friendship {
