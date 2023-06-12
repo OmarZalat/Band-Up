@@ -4,13 +4,8 @@ const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   const { page } = req.body;
-  const response = await prisma.bandPosts.findMany({
+  const response = await prisma.bandData.findMany({
     take: page * 10,
-    include: {
-      UserData: true,
-    },
-    orderBy: { createdAt: "desc" },
   });
-  res.json(response);
-  console.log(response);
+  res.send(response);
 }

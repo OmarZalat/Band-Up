@@ -237,3 +237,13 @@
   gap: 20px;
   min-height: 200px;
 }
+
+#load_more_posts {
+  width: 150px;
+  height: 100px;
+  background-color: orange;
+  color: white;
+  align-self: center;
+  margin-top: 20px;
+  border: 1px solid gray;
+}

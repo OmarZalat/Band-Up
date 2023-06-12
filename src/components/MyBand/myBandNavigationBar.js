@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function MyBandNavigationBar({ setActiveTab }) {
+function MyBandNavigationBar({ setActiveTab, role }) {
   return (
     <>
       <div id="myband_navigation_bar">
@@ -15,11 +15,14 @@ function MyBandNavigationBar({ setActiveTab }) {
               Members
             </Link>
           </li>
-          <li>
-            <Link href="#" onClick={() => setActiveTab("settings")}>
-              Settings
-            </Link>
-          </li>
+
+          {role === "LEADER" && (
+            <li>
+              <Link href="#" onClick={() => setActiveTab("settings")}>
+                Settings
+              </Link>
+            </li>
+          )}
           <li>
             <Link href="#" onClick={() => setActiveTab("about")}>
               About

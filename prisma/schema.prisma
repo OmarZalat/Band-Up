@@ -28,6 +28,8 @@ model BandPosts {
   BandData     BandData?      @relation(fields: [bandDataId], references: [id])
   Likes        Likes[]
   PostComments PostComments[]
+  userDataId   String? // New field for user data
+  UserData     UserData?      @relation(fields: [userDataId], references: [id]) // Relation to UserData
 }
 
 model PostComments {
@@ -57,13 +59,17 @@ model UserData {
   bandDataId        String?
   role              Role           @default(MEMBER)
   userDataId        String?
+  positionId        String?
   follower          Friendship[]   @relation("FollowerRelation")
   following         Friendship[]   @relation("FollowingRelation")
   Likes             Likes[]
   comments          PostComments[]
   Session           Session?
   BandData          BandData?      @relation(fields: [bandDataId], references: [id])
+  position          Position?      @relation(fields: [positionId], references: [id])
   interests         Interests[]    @relation("InterestsToUserData")
+
+  BandPosts BandPosts[]
 }
 
 model Friendship {
@@ -95,8 +101,9 @@ model Likes {
 }
 
 model Position {
-  id   String @id @default(cuid())
-  name String
+  id       String     @id @default(cuid())
+  name     String
+  UserData UserData[]
 }
 
 model Interests {

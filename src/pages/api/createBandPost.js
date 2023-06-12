@@ -10,7 +10,7 @@ var imagekit = new ImageKit({
 });
 
 export default async function handler(req, res) {
-  const { imageBase64, content, bandDataId, type } = req.body;
+  const { imageBase64, content, bandDataId, type, userID } = req.body;
   console.log(imageBase64, content, bandDataId);
   let url = null;
   if (imageBase64) {
@@ -25,6 +25,9 @@ export default async function handler(req, res) {
         content,
         image: url?.url || undefined,
         type,
+        UserData: {
+          connect: { id: userID },
+        },
         BandData: {
           connect: {
             id: bandDataId,
@@ -39,6 +42,9 @@ export default async function handler(req, res) {
         content,
         image: url?.url || undefined,
         type,
+        UserData: {
+          connect: { id: userID },
+        },
       },
     });
     res.send(response);
