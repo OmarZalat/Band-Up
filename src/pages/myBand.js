@@ -8,6 +8,8 @@ import { UserContext } from "@/context/userContext";
 import MyBandFeaturedTab from "@/components/MyBand/myBandFeaturedTab";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+const defaultBg =
+  "https://ik.imagekit.io/0tfb5ok46/Default-Profile-Picture-Transparent-Image.png?updatedAt=1684094895997";
 
 function MyBand() {
   const [activeTab, setActiveTab] = useState("featured");
@@ -64,6 +66,7 @@ function MyBand() {
               interest={bandData.interest.name}
               name={bandData.name}
               members={bandData.bandMembers}
+              ID={bandData.id}
             />
           );
         }
@@ -118,9 +121,19 @@ function MyBand() {
       <div id="myband_container">
         <div id="myband_wrapper">
           <div id="myband_header">
-            <div id="myband_header_cover_image">
+            <div
+              id="myband_header_cover_image"
+              style={{
+                backgroundImage: `url(${bandData?.banner})`,
+              }}
+            >
               <div id="myband_header_icon_wrapper">
-                <div id="myband_header_icon"></div>
+                <div
+                  id="myband_header_icon"
+                  style={{
+                    backgroundImage: `url(${bandData?.profile})`,
+                  }}
+                ></div>
               </div>
               <div id="myband_header_name_wrapper">
                 <h2>{bandData?.name}</h2>

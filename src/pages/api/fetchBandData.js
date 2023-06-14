@@ -12,6 +12,8 @@ export default async function handler(req, res) {
       name: true,
       id: true,
       bandMembers: { include: { position: true } },
+      profile: true,
+      banner: true,
     },
     where: {
       id: bandID,

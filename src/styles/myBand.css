@@ -36,10 +36,16 @@
 }
 
 #myband_header_icon {
-  width: 40%;
-  height: 100%;
   background-color: grey;
   border-radius: 50%;
+
+  width: 70px;
+  height: 70px;
+  /* background-color: grey; */
+  border-radius: 50%;
+  /* background-image: url(../../public/profile-pic.jpeg); */
+  background-size: cover;
+  background-position: center;
 }
 
 #myband_header_name_wrapper {
@@ -48,6 +54,7 @@
   width: 40%;
   height: 30%;
   margin-bottom: 20px;
+  color: orange;
 }
 
 #myband_renderer {

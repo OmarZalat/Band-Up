@@ -15,6 +15,7 @@ function ProfileModal(props) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [imageUploaded, setImageUploaded] = useState();
+  const [BannerUploaded, setBannerUploaded] = useState();
   console.log(user);
   useEffect(() => {
     // Fetch user's interests from the backend
@@ -106,6 +107,15 @@ function ProfileModal(props) {
         }),
       });
 
+      const bannerResult = await fetch("/api/addProfileBanner", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: user.id,
+          imageBase64: BannerUploaded,
+        }),
+      });
+
       // Handle the response from the server
     } catch (error) {
       // Handle the error
@@ -146,6 +156,18 @@ function ProfileModal(props) {
     };
   }
 
+  async function handleBannerUpload(e) {
+    const reader = new FileReader();
+    const currentFile = e.target.files?.[0];
+    if (currentFile) {
+      reader.readAsDataURL(currentFile);
+    }
+    reader.onloadend = async () => {
+      console.log(reader.result);
+      setBannerUploaded(reader.result);
+    };
+  }
+
   return (
     <div className="modal">
       <div className="modal_wrapper">
@@ -173,6 +195,21 @@ function ProfileModal(props) {
                 id="add_profile_photo"
                 type="file"
                 onChange={handleImageUpload}
+                style={{ display: "none" }}
+              />
+            </div>
+            <div className="modal_banner_picture_edit">
+              <label
+                htmlFor="add_banner_photo"
+                id="add_banner_photo_label"
+                className="banner_picture_input_label"
+              >
+                Upload Banner
+              </label>
+              <input
+                id="add_banner_photo"
+                type="file"
+                onChange={handleBannerUpload}
                 style={{ display: "none" }}
               />
             </div>
