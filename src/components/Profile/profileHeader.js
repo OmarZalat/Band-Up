@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ProfileBackdrop from "./profileBackdrop";
 import ProfileModal from "./profileModal";
+import { UserContext } from "@/context/userContext";
 
 const defaultBanner =
   "https://ik.imagekit.io/0tfb5ok46/image_1_.png?updatedAt=1684094946375";
 
 function ProfileHeader({ LName, FName, country, backgroundImage }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { user, setUser } = useContext(UserContext);
+
   console.log(LName, FName, country, backgroundImage);
+  console.log(user);
 
   function deleteHandler() {
     setModalIsOpen(!modalIsOpen);

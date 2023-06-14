@@ -13,8 +13,8 @@ model BandData {
   bio         String?
   name        String
   interestsId String
-  profile     String?
   banner      String?
+  profile     String?
   interest    Interests   @relation(fields: [interestsId], references: [id])
   posts       BandPosts[]
   bandMembers UserData[]
@@ -50,7 +50,6 @@ model UserData {
   LName             String
   username          String?
   image             String?
-  banner            String?
   email             String         @unique
   emailVerification Boolean
   newsletterMember  Boolean
@@ -63,6 +62,7 @@ model UserData {
   role              Role           @default(MEMBER)
   userDataId        String?
   positionId        String?
+  banner            String?
   BandPosts         BandPosts[]
   follower          Friendship[]   @relation("FollowerRelation")
   following         Friendship[]   @relation("FollowingRelation")

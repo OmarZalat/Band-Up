@@ -33,6 +33,7 @@ export default async function handler(req, res) {
               BandData: true,
               follower: true,
               BandPosts: true,
+              banner: true,
             },
           },
         },

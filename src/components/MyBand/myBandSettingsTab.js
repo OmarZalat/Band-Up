@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-function MyBandSettingsTab({ name, bio, interest, members }) {
+function MyBandSettingsTab({ name, bio, interest, members, ID }) {
   const [formData, setFormData] = useState({
     name: name,
     bio: bio,
@@ -10,6 +10,8 @@ function MyBandSettingsTab({ name, bio, interest, members }) {
   const [bioError, setBioError] = useState("");
   const [positions, setPositions] = useState([]);
   const [tags, setTags] = useState([]);
+  const [bandProfilePictureUpload, setBandProfilePictureUpload] = useState();
+  const [bandBannerUploaded, setBandBannerUploaded] = useState();
 
   useEffect(() => {
     fetchData();
@@ -54,6 +56,52 @@ function MyBandSettingsTab({ name, bio, interest, members }) {
       setBioError("");
     }
   };
+
+  async function saveChangesHandler(e) {
+    e.preventDefault();
+
+    const bandPictureresult = await fetch("/api/addBandProfile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: ID,
+        imageBase64: bandProfilePictureUpload,
+      }),
+    });
+
+    const bandBannerResult = await fetch("/api/addBandBanner", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: ID,
+        imageBase64: bandBannerUploaded,
+      }),
+    });
+  }
+
+  async function handleBandProfilePictureUpload(e) {
+    const reader = new FileReader();
+    const currentFile = e.target.files?.[0];
+    if (currentFile) {
+      reader.readAsDataURL(currentFile);
+    }
+    reader.onloadend = async () => {
+      console.log(reader.result);
+      setBandProfilePictureUpload(reader.result);
+    };
+  }
+
+  async function handleBandBannerUpload(e) {
+    const reader = new FileReader();
+    const currentFile = e.target.files?.[0];
+    if (currentFile) {
+      reader.readAsDataURL(currentFile);
+    }
+    reader.onloadend = async () => {
+      console.log(reader.result);
+      setBandBannerUploaded(reader.result);
+    };
+  }
 
   return (
     <>
@@ -137,8 +185,42 @@ function MyBandSettingsTab({ name, bio, interest, members }) {
             ></textarea>
             {bioError && <p className="error_message">{bioError}</p>}
           </div>
+          <div className="settings_card_element_6">
+            <div className="settings_card_element_6_profile_picture">
+              <label
+                htmlFor="add_band_profile_picture_photo"
+                id="add_band_profile_picture_photo_label"
+                className="band_profile_picture_picture_input_label"
+              >
+                Upload picture
+              </label>
+              <input
+                id="add_band_profile_picture_photo"
+                type="file"
+                onChange={handleBandProfilePictureUpload}
+                style={{ display: "none" }}
+              />
+            </div>
+            <div className="settings_card_element_6_banner">
+              <label
+                htmlFor="add_band_banner_photo"
+                id="add_band_banner_photo_label"
+                className="band_banner_picture_input_label"
+              >
+                Upload Banner
+              </label>
+              <input
+                id="add_band_banner_photo"
+                type="file"
+                onChange={handleBandBannerUpload}
+                style={{ display: "none" }}
+              />
+            </div>
+          </div>
           <div className="settings_card_element_5">
-            <button id="settings_card_save_button">Save</button>
+            <button id="settings_card_save_button" onClick={saveChangesHandler}>
+              Save
+            </button>
             <button id="settings_card_cancel_button">Cancel</button>
           </div>
         </div>

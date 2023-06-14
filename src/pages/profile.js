@@ -22,7 +22,7 @@ function Profile() {
                 FName={user.FName}
                 LName={user.LName}
                 country={user.country}
-                backgroundImage={user.backgroundImage}
+                backgroundImage={user.banner}
               />
               <div id="main">
                 <div id="main_left">
